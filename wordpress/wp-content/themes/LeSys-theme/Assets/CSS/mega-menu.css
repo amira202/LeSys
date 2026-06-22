@@ -1,0 +1,203 @@
+/* الحاوية الرئيسية للشريط العلوي (Navbar) */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    background-color: #fff;
+    padding: 15px 5%;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* روابط الشريط العلوي الرئيسية */
+.nav-menu > a {
+    text-decoration: none;
+    color: #2a2c2e;
+    font-weight: 500;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+}
+
+/* ==========================================
+   صندوق الـ Mega Menu (تقليص المسافات وتثبيت الـ 3 أعمدة)
+   ========================================== */
+.nav-menu > ul.sub-menu {
+    display: none; /* إخفاء افتراضي ويظهر عند الـ Hover */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid #f3f4f6;
+    padding: 30px 5%;
+    box-sizing: border-box;
+    z-index: 9999;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    
+    /* 🔴 السحر البرمجي: جعل ارتفاع الأسطر مرناً وتلقائياً ليمنع التمدد الفجائي */
+    grid-template-rows: max-content max-content max-content max-content;
+    
+    /* ضبط مسافة الـ Grid ليكون 0 عمودياً، ونعتمد بالكامل على تباعد القوائم الداخلية */
+    gap: 0 40px; 
+}
+
+/* إظهار الميجا منيو عند تمرير الماوس */
+.nav-menu > a:hover + ul.sub-menu,
+.nav-menu > ul.sub-menu:hover {
+    display: grid; 
+}
+
+/* ==========================================
+   تنسيق العناوين الـ Bold (المستوى الثاني)
+   ========================================== */
+.nav-menu > ul.sub-menu > a {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827; 
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    
+    /* 🔴 تقليص التباعد حول العناوين الـ Bold لتقريب المحتوى */
+    padding: 25px 0 8px 0; 
+}
+
+/* ==========================================
+   تنسيق القوائم الفرعية (المستوى الثالث) لتقليص الـ Gap
+   ========================================== */
+.nav-menu > ul.sub-menu > ul.sub-menu {
+    display: flex !important;
+    flex-direction: column; 
+    
+    /* 🔴 تقليص المسافة العمودية تماماً بين الروابط الفردية لتبدو متراصة ناعمة */
+    gap: 4px; 
+    
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   توزيع الأعمدة يدوياً (محدث ليشمل كافة الأقسام الجديدة لديكِ)
+   ========================================== */
+
+/* 🟢 العمود الأول */
+.nav-menu > ul.sub-menu > a:nth-of-type(1) { grid-column: 1; grid-row: 1; }
+.nav-menu > ul.sub-menu > ul.sub-menu:nth-of-type(1) { grid-column: 1; grid-row: 2; }
+
+/* 🔵 العمود الثاني */
+.nav-menu > ul.sub-menu > a:nth-of-type(2) { grid-column: 2; grid-row: 1; }
+.nav-menu > ul.sub-menu > ul.sub-menu:nth-of-type(2) { grid-column: 2; grid-row: 2; }
+
+/* 🟣 العمود الثالث */
+.nav-menu > ul.sub-menu > a:nth-of-type(3) { grid-column: 3; grid-row: 1; }
+.nav-menu > ul.sub-menu > ul.sub-menu:nth-of-type(3) { grid-column: 3; grid-row: 2; }
+
+/* ⚪ السطر الثاني - العمود الأول (Cloud & Infrastructure) */
+.nav-menu > ul.sub-menu > a:nth-of-type(4) { grid-column: 1; grid-row: 3; }
+.nav-menu > ul.sub-menu > ul.sub-menu:nth-of-type(4) { grid-column: 1; grid-row: 4; }
+
+/* ⚫ السطر الثاني - العمود الثاني (Cybersecurity & Compliance) */
+.nav-menu > ul.sub-menu > a:nth-of-type(5) { grid-column: 2; grid-row: 3; }
+.nav-menu > ul.sub-menu > ul.sub-menu:nth-of-type(5) { grid-column: 2; grid-row: 4; }
+
+
+/* ==========================================
+   تنسيق الروابط واللمسات الأخيرة
+   ========================================== */
+.nav-menu > ul.sub-menu > ul.sub-menu a {
+    display: block;
+    text-decoration: none;
+    color: #6b7280; 
+    font-size: 14px;
+    font-weight: 400;
+    padding: 2px 0;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.nav-menu > ul.sub-menu > ul.sub-menu a:hover {
+    color: #4f46e5; 
+}
+
+/* إلغاء السهم من كافة العناصر الداخلية للـ Mega Menu */
+.nav-menu > ul.sub-menu i {
+    display: none !important;
+}
+
+
+/* 1. إلغاء الإظهار التلقائي عند تمرير الماوس (Hover) الذي قمنا بكتابته سابقاً */
+.nav-menu > a:hover + ul.sub-menu,
+.nav-menu > ul.sub-menu:hover {
+    display: none; 
+}
+
+/* 2. الإظهار الجديد المعتمد على الضغط (Click) */
+.nav-menu > ul.sub-menu.is-active {
+    display: grid !important; /* إظهار الميجا منيو عند إضافة الكلاس */
+}
+
+/* 3. تدوير السهم ليصبح لأعلى (مثل رقم 8) عند فتح القائمة */
+.nav-menu > a.is-active i.fa-chevron-down {
+    transform: rotate(180deg); /* تدوير السهم 180 درجة */
+    color: #4f46e5; /* اختيار لون مميز للسهم النشط */
+}
+
+/* تأكيد إضافة تنعيم حركة تدوير السهم */
+.nav-menu > a i.fa-chevron-down {
+    transition: transform 0.25s ease; 
+}
+/* ==========================================
+   إعدادات الإخفاء والإظهار الشاملة لجميع القوائم
+   ========================================== */
+
+/* إخفاء افتراضي قطعي لجميع القوائم الفرعية الكبيرة عند تحميل الصفحة */
+.nav-menu > ul.sub-menu {
+    display: none !important; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid #f3f4f6;
+    padding: 30px 5%;
+    box-sizing: border-box;
+    z-index: 9999;
+    
+    /* إعدادات الـ Grid الثابتة للـ 3 أعمدة */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: max-content max-content max-content max-content;
+    gap: 0 40px; 
+}
+
+/* الكلاس العام لإظهار القائمة النشطة فقط عبر الـ Grid */
+.nav-menu > ul.sub-menu.is-active {
+    display: grid !important; 
+}
+
+/* تدوير السهم الخاص بالعنصر النشط حالياً ليصبح مثل رقم 8 */
+.nav-menu > a.is-active i {
+    transform: rotate(180deg);
+    color: #4f46e5;
+}
+
+/* تنعيم حركة تدوير السهم لجميع الروابط الرئيسية */
+.nav-menu > a i {
+    transition: transform 0.25s ease; 
+}
+
+.nav-menu > ul.sub-menu > ul.sub-menu a:hover {
+  color: #e2462b !important; /* لون أحمر مميز عند التمرير */
+  font-weight: 600; /* زيادة سمك الخط قليلاً عند التمرير */  
+}
+
