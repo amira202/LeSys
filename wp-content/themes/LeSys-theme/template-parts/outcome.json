@@ -1,0 +1,58 @@
+{
+  "key": "group_6680a1b2c3d4e",
+  "title": "CEO Talk Content",
+  "fields": [
+    {
+      "key": "field_ceo_heading",
+      "label": "Heading",
+      "name": "talk_heading",
+      "type": "text",
+      "instructions": "",
+      "required": 1,
+      "wrapper": { "width": "", "class": "", "id": "" }
+    },
+    {
+      "key": "field_ceo_image",
+      "label": "CEO Portrait",
+      "name": "ceo_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_ceo_body",
+      "label": "CEO Message",
+      "name": "talk_body",
+      "type": "wysiwyg",
+      "tabs": "visual",
+      "toolbar": "basic"
+    },
+    {
+      "key": "field_ceo_name",
+      "label": "CEO Name",
+      "name": "ceo_name",
+      "type": "text"
+    },
+    {
+      "key": "field_ceo_sig",
+      "label": "Signature",
+      "name": "closing_signature",
+      "type": "text"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "page-ceo_talk.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true
+}
