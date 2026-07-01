@@ -1,353 +1,131 @@
-<?php get_header(); 
-$bg          = get_option('lesys_archive_industry_hero_bg');
-$subtitle    = get_option('industries_archive_subtitle');
-$title       = get_option('industries_archive_title');
-$description = get_option('industries_archive_description');
-$cta_text    = get_option('industries_archive_cta_text');
-$cta_url     = get_option('industries_archive_cta_url');
+<?php 
+/**
+ * Archive Template: Industry
+ */
+get_header(); 
 
+// 1. Setup Query Arguments
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args = [
+    'post_type'      => 'industry', 
+    'posts_per_page' => 9,
+    'paged'          => $paged,
+    'orderby'        => 'date',
+    'order'          => 'DESC'
+];
 
+if (!empty($_GET['category'])) {
+    $args['tax_query'] = [['taxonomy' => 'category', 'field' => 'slug', 'terms' => sanitize_text_field($_GET['category'])]];
+}
+$query = new WP_Query($args);
 ?>
-<section class="industries-hero" style="background-image:url('<?php echo esc_url($bg); ?>');">
-    <div class="hero-overlay"></div>
+
+<section class="archive-hero">
     <div class="container">
+        
         <div class="hero-content">
-
-            
-            <span class="hero-subtitle"><?php echo esc_html($subtitle); ?></span>
-            <h1><?php echo wp_kses_post($title); ?></h1>
-            <p><?php echo esc_html($description); ?></p>
-            
-            <div class="hero-cta-wrapper">
-                <a href="<?php echo esc_url($cta_url); ?>" class="btn-primary"><?php echo esc_html($cta_text); ?></a>
-            </div>
-                        <div class="hero-breadcrumbs">
-                <?php echo do_shortcode('[lesys_breadcrumbs]'); ?>
+            <span class="hero-label">Engineering Excellence</span>
+            <h1>Our Industries</h1>
+            <p>Driving operational success through intelligent industrys, continuous monitoring, and tailored innovation.</p>
+            <div class="hero-cta-container">
+                <a href="/contact" class="btn-primary">Talk to an Expert</a>
             </div>
         </div>
+                <!-- Breadcrumbs -->
+        <nav class="breadcrumb">
+            <a href="<?php echo home_url(); ?>">Home</a> <span>/</span> Industries
+        </nav>
     </div>
 </section>
 
-<section class="industries-grid-section">
+<section class="archive-main">
     <div class="container">
+        <!-- Optimized Filter Tabs -->
+        <div class="filter-tabs">
+            <a href="?" class="<?php echo empty($_GET['category']) ? 'active' : ''; ?>">All</a>
+            <?php
+            // Get IDs of all industrys to filter relevant categories
+            $industry_ids = get_posts(['post_type' => 'industry', 'posts_per_page' => -1, 'fields' => 'ids']);
+            $terms = get_terms(['taxonomy' => 'category', 'hide_empty' => true, 'object_ids' => $industry_ids]);
 
-        <div class="industries-grid">
-
-            <?php if (have_posts()) : ?>
-
-                <?php while (have_posts()) : the_post(); ?>
-
-                    <?php
-                    $hero = get_field('hero_section');
-                    $short_desc = $hero['short_description'] ?? '';
-                    ?>
-
-                    <article class="industry-card">
-
-                        <a href="<?php the_permalink(); ?>" class="industry-card-image">
-
-                            <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('large'); ?>
-                            <?php else : ?>
-                                <div class="industry-card-placeholder">
-                                    Industry
-                                </div>
-                            <?php endif; ?>
-
-                        </a>
-
-                        <div class="industry-card-content">
-
-                            <h3>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
-
-                            <?php if ($short_desc) : ?>
-                                <p>
-                                    <?php echo wp_trim_words($short_desc, 22); ?>
-                                </p>
-                            <?php endif; ?>
-
-                            <a href="<?php the_permalink(); ?>" class="industry-link">
-                                Explore Industry →
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                <?php endwhile; ?>
-
-            <?php endif; ?>
-
+            if (!is_wp_error($terms) && !empty($terms)) {
+                foreach ($terms as $term) {
+                    $active = (isset($_GET['category']) && $_GET['category'] == $term->slug) ? 'active' : '';
+                    echo '<a href="?category='.esc_attr($term->slug).'" class="'.$active.'">'.esc_html($term->name).'</a>';
+                }
+            }
+            ?>
         </div>
 
-    </div>
-</section>
-
-<section class="industries-cta">
-    <div class="container">
-
-        <div class="cta-box">
-
-            <h2>Need a tailored industry solution?</h2>
-
-            <p>
-                Speak with our experts to discuss your operational,
-                technology, and transformation objectives.
-            </p>
-
-            <a href="<?php echo esc_url(home_url('/contact')); ?>"
-               class="cta-btn">
-                Talk to an Expert
-            </a>
-
+        <div class="archive-grid">
+            <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
+                <article class="lesys-card">
+                    <div class="card-image"><?php if (has_post_thumbnail()) { the_post_thumbnail('medium'); } ?></div>
+                    <div class="card-content">
+                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                        <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="card-link">Explore industry →</a>
+                    </div>
+                </article>
+            <?php endwhile; wp_reset_postdata(); endif; ?>
         </div>
-
     </div>
 </section>
+
 <style>
-.industries-hero {
-    position: relative;
-    min-height: 600px;
-    display: flex; /* Forces layout stability */
-    align-items: center; /* Aligns content vertically */
-    background-size: cover;
-    background-position: center;
-    padding: 120px 0;
-    color: #fff;
+/* Hero Section */
+.archive-hero { background: #0b1f3a; color: #ffffff; padding: 120px 0; }
+.breadcrumb { font-size: 0.85rem; color: #6ea3c5;text-align: left;
+  margin-top: 20px;}
+.breadcrumb a { color: #ffffff; text-decoration: none; }
+.hero-content { text-align: left; max-width: 800px; }
+.hero-label { color: #6ea3c5; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 20px; display: block; }
+.btn-primary { display: inline-block;  color: #ffffff; padding: 16px 32px; border-radius: 4px; font-weight: 700; text-decoration: none; transition: 0.3s; margin-top: 20px; }
+.btn-primary:hover { background: #c24400; }
+
+/* Filter Tabs */
+.filter-tabs { display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+.filter-tabs a { padding: 10px 20px; border-radius: 25px; background: #e2e8f0; color: #475569; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.filter-tabs a.active, .filter-tabs a:hover { background: var(--red); color: #ffffff; }
+
+/* Grid & Cards */
+.archive-main { padding: 80px 0; background: #f8fafc; }
+.archive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.lesys-card { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; transition: 0.3s; }
+.lesys-card:hover { transform: translateY(-5px); border-color: #6ea3c5; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.card-image { height: 160px; overflow: hidden; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+.card-link { color: var(--red); font-weight: 700; text-decoration: none; }
+.card-content { 
+    padding: 25px; 
+    display: flex;
+    flex-direction: column;
 }
 
-.hero-content {
-    max-width: 650px;
-    text-align: left; /* Ensures the "Start the Conversation" text hits the left margin */
-    z-index: 2;
-    position: relative;
+/* Remove default margins that cause excessive spacing */
+.card-content h3 { 
+    margin: 0 0 8px 0; /* Tightened space below title */
+    line-height: 1.2;
 }
 
-.hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    line-height: 1.1;
-    margin-bottom: 25px;
+.card-content p { 
+    margin: 0 0 12px 0; /* Tightened space below excerpt */
+    line-height: 1.5;
 }
 
-/* GRID */
-.industries-grid-section{
-    padding:100px 0;
+.card-link { 
+    margin-top: auto; /* Keeps the link aligned if cards have different heights */
+    display: inline-block;
 }
-
-.industries-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-}
-
-.industry-card{
-    background:#fff;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 12px 35px rgba(0,0,0,.06);
-    transition:.3s;
-}
-
-.industry-card:hover{
-    transform:translateY(-8px);
-}
-
-.industry-card-image{
-    display:block;
-    height:240px;
-}
-
-.industry-card-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.industry-card-content{
-    padding:30px;
-}
-
-.industry-card-content h3{
-    margin-bottom:15px;
-    font-size:24px;
-}
-
-.industry-card-content h3 a{
-    color:#0b1f3a;
-    text-decoration:none;
-}
-
-.industry-card-content p{
-    color:#667085;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.industry-link{
-    color:var(--red);
-    font-weight:600;
-    text-decoration:none;
-}
-
-/* CTA */
-.industries-cta{
-    padding:100px 0;
-}
-
-.cta-box{
-    background:linear-gradient(
-        135deg,
-        #0b1f3a,
-        #1f4f82
-    );
-
-    color:#fff;
-    text-align:center;
-    padding:70px;
-    border-radius:24px;
-}
-
-.cta-box h2{
-    font-size:38px;
-    margin-bottom:15px;
-}
-
-.cta-box p{
-    max-width:700px;
-    margin:0 auto 30px;
-    color:#d7e0ea;
-}
-
-.cta-btn{
-    display:inline-block;
-    background:#e2462b;
-    color:#fff;
-    text-decoration:none;
-    padding:14px 28px;
-    border-radius:8px;
-    font-weight:600;
-}
-
-@media(max-width:992px){
-
-    .industries-grid{
-        grid-template-columns:1fr;
-    }
-
-    .industries-hero h1{
-        font-size:40px;
-    }
-}
-.industries-hero{
-    position:relative;
-
-    min-height:550px;
-
-    display:flex;
-    align-items:center;
-
-    background-size:cover;
-    background-position:center;
-
-    padding-top:120px;
-
-    color:#fff;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-        90deg,
-        rgba(11,31,58,.88) 0%,
-        rgba(11,31,58,.70) 45%,
-        rgba(11,31,58,.50) 100%
-    );
-}
-
-.industries-hero .container{
-    position:relative;
-    z-index:2;
-}
-
-.hero-content{
-    max-width:700px;
-}
-
-.hero-subtitle{
-    display:inline-block;
-
-    font-size:13px;
-    font-weight:600;
-
-    letter-spacing:2px;
-    text-transform:uppercase;
-
-    color:#d7e0ea;
-
-    margin-bottom:20px;
-}
-
+@media(max-width:992px){ .archive-grid { grid-template-columns: 1fr; } }
 .hero-content h1{
-    font-size:64px;
-    line-height:1.1;
-    margin-bottom:25px;
-}
-
-.hero-content p{
-    font-size:18px;
-    line-height:1.8;
-
-    color:#d7e0ea;
-
-    margin-bottom:30px;
-}
-
-/* Breadcrumbs */
-.hero-breadcrumbs{
-    margin-top:25px;
-}
-
-.hero-breadcrumbs a{
-    color:#fff;
-    opacity:.8;
-    text-decoration:none;
-}
-
-.hero-breadcrumbs a:hover{
-    opacity:1;
-}
-
-.hero-breadcrumbs .current{
-    color:#fff;
-    font-weight:600;
-}
-
-@media(max-width:992px){
-
-    .industries-hero{
-        min-height:450px;
-    }
-
-    .hero-content h1{
-        font-size:42px;
-    }
-
-    .hero-content p{
-        font-size:16px;
-    }
+    margin-bottom:20px;
 }
 </style>
+
 <?php
 get_template_part('template-parts/content', 'successstory');
 get_template_part('template-parts/content', 'trustedfoundations');
 get_template_part('template-parts/content', 'contact');
-
-get_footer();
+get_footer(); 
 ?>

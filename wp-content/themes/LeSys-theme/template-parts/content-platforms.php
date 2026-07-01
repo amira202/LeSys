@@ -8,7 +8,7 @@ $button_url = get_field('platforms_button_url');
 // Query your 'platform' custom post type dynamically
 $platforms_query = new WP_Query([
     'post_type'      => 'platform',
-    'posts_per_page' => -1, // Fetch all platforms
+    'posts_per_page' => 5, // Fetch all platforms
     'post_status'    => 'publish',
     'orderby'        => 'menu_order',
     'order'          => 'ASC'

@@ -1,623 +1,206 @@
-<?php
-/**
- * Template Name: Corporate Solution - Dark Mode
- * Description: High-end layout mirroring dark corporate brand boards with integrated lead forms.
- */
-
-get_header(); 
-?>
-
-<div class="lesys-solution-template">
-
-    
-    <!-- HERO SECTION WITH STATIC DYNAMIC BACKGROUND -->
-    <header class="lesys-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/business_operations.png');">
-        <div class="lesys-container">
-            <span class="lesys-tagline">BUSINESS APPLICATIONS</span>
-            <h1 class="lesys-title">Empowering Organizations with <span class="text-gradient">Intelligent Business Applications</span></h1>
-            <p class="lesys-lead">Modern organizations require more than standalone software—they need connected business applications that streamline operations, improve customer experiences, and drive informed decision-making.</p>
-            <div class="lesys-hero-actions">
-                <a href="#contact" class="btn btn-primary">Get Started Now</a>
-                <a href="#features" class="btn btn-ghost">Explore Capabilities</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- MAIN BODY AND OVERVIEW -->
-    <section class="lesys-overview" id="features">
-        <div class="lesys-container lesys-overview__grid">
-            <div class="lesys-overview__main">
-                <h2 class="lesys-section-title ac">Transform Your Business Operations</h2>
-                <p class="lesys-body-text">At LeSys, we help organizations modernize and optimize their business processes through enterprise-grade applications designed to enhance productivity, automation, visibility, and growth. Whether you're looking to improve internal operations, strengthen customer engagement, or accelerate digital transformation, our business application solutions provide the foundation for sustainable success.</p>
-                <p class="lesys-body-text">Business applications are the backbone of digital enterprises. They enable organizations to automate workflows, centralize information, eliminate manual processes, and create seamless experiences for employees, customers, and stakeholders.</p>
-            </div>
-            
-            <!-- SOLUTION TARGET BENEFITS CARD -->
-            <div class="lesys-overview__sidebar">
-                <div class="lesys-feature-card">
-                    <h4 class="lesys-card-title">Our solutions are designed to:</h4>
-                    <ul class="lesys-feature-list">
-                        <li><span class="lesys-list-icon"></span> Improve operational efficiency</li>
-                        <li><span class="lesys-list-icon"></span> Increase organizational agility</li>
-                        <li><span class="lesys-list-icon"></span> Enhance customer satisfaction</li>
-                        <li><span class="lesys-list-icon"></span> Enable data-driven decision making</li>
-                        <li><span class="lesys-list-icon"></span> Reduce operational costs</li>
-                        <li><span class="lesys-list-icon"></span> Accelerate digital transformation initiatives</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- SUB-SOLUTIONS GRID SECTION -->
-    <section class="lesys-sub-solutions" id="solutions">
-        <div class="lesys-container">
-            <div class="lesys-section-header">
-                <span class="lesys-tagline">CORE CAPABILITIES</span>
-                <h2 class="lesys-section-title">Our Sub-Solutions Ecosystem</h2>
-                <p class="lesys-body-text" style="color: var(--lesys-text-muted); max-width: 600px;">
-                    Explore our integrated enterprise-grade frameworks built to optimize organizational performance and scale operations.
-                </p>
-            </div>
-
-            <div class="lesys-sub-grid">
-                
-                <!-- Card 1 -->
-                <div class="lesys-sub-card">
-                    <div class="lesys-sub-icon">📂</div>
-                    <h3 class="lesys-sub-title">ERP Solutions</h3>
-                    <p class="lesys-sub-desc">Centralize core enterprise data and automate complex processes across production, finance, and resources.</p>
-                    <a href="#" class="lesys-sub-link">Learn More <span class="arrow">&rarr;</span></a>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="lesys-sub-card">
-                    <div class="lesys-sub-icon">⚙️</div>
-                    <h3 class="lesys-sub-title">IT Service Management (ITSM)</h3>
-                    <p class="lesys-sub-desc">Align your information technology processes directly with enterprise business goals using advanced delivery frameworks.</p>
-                    <a href="#" class="lesys-sub-link">Learn More <span class="arrow">&rarr;</span></a>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="lesys-sub-card">
-                    <div class="lesys-sub-icon">🤝</div>
-                    <h3 class="lesys-sub-title">CRM Solutions</h3>
-                    <p class="lesys-sub-desc">Track operations, manage dynamic consumer pipelines, and leverage intelligence tools to retain clients.</p>
-                    <a href="#" class="lesys-sub-link">Learn More <span class="arrow">&rarr;</span></a>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="lesys-sub-card">
-                    <div class="lesys-sub-icon">📊</div>
-                    <h3 class="lesys-sub-title">Asset Management</h3>
-                    <p class="lesys-sub-desc">Maximize hardware and software utilization life-cycles to mitigate compliance overhead and resource risks.</p>
-                    <a href="#" class="lesys-sub-link">Learn More <span class="arrow">&rarr;</span></a>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="lesys-sub-card">
-                    <div class="lesys-sub-icon">🌐</div>
-                    <h3 class="lesys-sub-title">E-Services Platforms</h3>
-                    <p class="lesys-sub-desc">Deploy high-performance portal layers giving public and corporate stakeholders real-time digital capabilities.</p>
-                    <a href="#" class="lesys-sub-link">Learn More <span class="arrow">&rarr;</span></a>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="lesys-sub-card">
-                    <div class="lesys-sub-icon">🎯</div>
-                    <h3 class="lesys-sub-title">Customer Experience Platforms</h3>
-                    <p class="lesys-sub-desc">Harmonize cross-channel touchpoints to deliver meaningful, intuitive brand experiences at scale.</p>
-                    <a href="#" class="lesys-sub-link">Learn More <span class="arrow">&rarr;</span></a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- WHY CHOOSE LESYS SECTION -->
-    <section class="lesys-why-choose">
-        <div class="lesys-container">
-            
-            <div class="lesys-why-header text-center">
-                <span class="lesys-tagline">OUR VALUE VALUE PROPOSITION</span>
-                <h2 class="lesys-section-title">Why Choose LeSys?</h2>
-            </div>
-
-            <div class="lesys-why-grid">
-                
-                <!-- Pillar 1: Industry Expertise -->
-                <div class="lesys-why-card">
-                    <div class="lesys-why-badge">01</div>
-                    <h3 class="lesys-why-title">Industry Expertise</h3>
-                    <p class="lesys-why-desc">Our consultants bring deep experience across government, smart cities, utilities, healthcare, education, and enterprise sectors.</p>
-                </div>
-
-                <!-- Pillar 2: End-to-End Delivery -->
-                <div class="lesys-why-card">
-                    <div class="lesys-why-badge">02</div>
-                    <h3 class="lesys-why-title">End-to-End Delivery</h3>
-                    <p class="lesys-why-desc">From strategy and design to implementation, integration, training, and support, we deliver complete business application solutions.</p>
-                </div>
-
-                <!-- Pillar 3: Seamless Integration -->
-                <div class="lesys-why-card">
-                    <div class="lesys-why-badge">03</div>
-                    <h3 class="lesys-why-title">Seamless Integration</h3>
-                    <p class="lesys-why-desc">Our solutions integrate existing enterprise systems, ensuring smooth adoption and maximum business value.</p>
-                </div>
-
-                <!-- Pillar 4: Future-Ready Platforms -->
-                <div class="lesys-why-card">
-                    <div class="lesys-why-badge">04</div>
-                    <h3 class="lesys-why-title">Future-Ready Platforms</h3>
-                    <p class="lesys-why-desc">We build scalable and flexible environments that evolve with your organization's changing needs.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-</div>
-<?php get_template_part('template-parts/content', 'contact'); ?>
-<style>
-    /* ==========================================================================
-   LeSys Solution Page Custom Theme Stylesheet 
-   ========================================================================== */
-
-:root {
-    --lesys-bg-deep: #060b19;
-    --lesys-bg-card: #0d1527;
-    --lesys-accent-red: #ff3b30;
-    --lesys-accent-red-hover: #e02e24;
-    --lesys-text-main: #ffffff;
-    --lesys-text-muted: #94a3b8;
-    --lesys-border: #1e293b;
-}
-
-.lesys-solution-template {
-    background-color: var(--lesys-bg-deep);
-    color: var(--lesys-text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    overflow-x: hidden;
-}
-
-.lesys-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* Hero UI Section Styling */
-.lesys-hero {
-    padding: 120px 0 80px 0;
-    text-align: left;
-    border-bottom: 1px solid var(--lesys-border);
-}
-.lesys-tagline {
-    color: var(--lesys-accent-red);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    display: block;
-    margin-bottom: 16px;
-  font-size: 1rem;
-  font-weight: 750;
-  letter-spacing: 3px;
-  display: block;
-  margin-bottom: 16px;
-  color: var(--red);
-}
-.lesys-title {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    max-width: 900px;
-    margin-bottom: 24px;
-}
-.text-gradient {
-    /*color: #4facfe;
-    background-image: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;**/
-    color: var(--blue);
-}
-.lesys-lead {
-    font-size: 1.25rem;
-    color: var(--lesys-text-muted);
-    line-height: 1.6;
-    max-width: 750px;
-    margin-bottom: 40px;
-}
-
-/* Global Corporate Button Assets */
-.lesys-btn {
-    display: inline-block;
-    padding: 14px 28px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-.lesys-btn--primary {
-    background-color: var(--lesys-accent-red);
-    color: #ffffff;
-    border: 1px solid var(--lesys-accent-red);
-}
-.lesys-btn--primary:hover {
-    background-color: var(--lesys-accent-red-hover);
-    border-color: var(--lesys-accent-red-hover);
-}
-.lesys-btn--secondary {
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid var(--lesys-border);
-    margin-left: 16px;
-}
-.lesys-btn--secondary:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-.lesys-btn--block {
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
-/* Stats Metrics Framework Grid */
-.lesys-stats {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--lesys-border);
-    background-color: rgba(13, 21, 39, 0.4);
-}
-.lesys-stats__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 32px;
-}
-.lesys-stat-card h3 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 4px 0;
-}
-.lesys-stat-card p {
-    font-size: 0.9rem;
-    color: var(--lesys-text-muted);
-    margin: 0;
-}
-
-/* Layout Overview Grid Columns */
-.lesys-overview {
-    padding: 100px 0;
-    background: white;
-    color: black;
-}
-.lesys-overview__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 64px;
-}
-@media (min-width: 768px) {
-    .lesys-overview__grid {
-        grid-template-columns: 1.4fr 1fr;
-    }
-}
-.lesys-section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
-    color:#436f8f;
-}
-.lesys-body-text {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #cbd5e1;
-    margin-bottom: 24px;
-    color: #88919c;
-}
-
-/* Premium Solution Focus Card Styles */
-.lesys-feature-card {
-    background-color: var(--bg-dark);
-    border: 1px solid var(--bg-dark);
-    border-radius: 8px;
-    padding: 32px;
-}
-.lesys-card-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 24px;
-    color:white;
-}
-.lesys-feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.lesys-feature-list li {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    color: #e2e8f0;
-}
-.lesys-list-icon {
-    width: 6px;
-    height: 6px;
-    background-color: var(--lesys-accent-red);
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 14px;
-    flex-shrink: 0;
-}
-
-/* Dynamic Lead Gen Target Footer Section Form */
-.lesys-contact-cta {
-    padding: 100px 0;
-    background-color: rgba(13, 21, 39, 0.6);
-    border-top: 1px solid var(--lesys-border);
-}
-.lesys-contact-cta__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    align-items: center;
-}
-@media (min-width: 768px) {
-    .lesys-contact-cta__grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-.lesys-embedded-form {
-    background-color: var(--lesys-bg-deep);
-    border: 1px solid var(--lesys-border);
-    padding: 32px;
-    border-radius: 6px;
-}
-.lesys-embedded-form .form-group {
-    margin-bottom: 20px;
-}
-.lesys-embedded-form input,
-.lesys-embedded-form textarea {
-    width: 100%;
-    background-color: var(--lesys-bg-card);
-    border: 1px solid var(--lesys-border);
-    padding: 14px;
-    color: #ffffff;
-    font-size: 0.95rem;
-    border-radius: 4px;
-    outline: none;
-    box-sizing: border-box;
-}
-.lesys-embedded-form input:focus,
-.lesys-embedded-form textarea:focus {
-    border-color: #4facfe;
-}
-/* ==========================================================================
-   LeSys Sub-Solutions Interactive Grid Stylesheet
-   ========================================================================== */
-
-.lesys-sub-solutions {
-    padding: 100px 0 60px 0;
-    border-bottom: 1px solid var(--bg-dark)
-}
-
-.lesys-section-header {
-    margin-bottom: 50px;
-}
-
-/* Grid Layout Matrix Setup */
-.lesys-sub-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-@media (min-width: 576px) {
-    .lesys-sub-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .lesys-sub-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* Card Visual Design & Elevation */
-.lesys-sub-card {
-    background-color: var(--lesys-bg-card);
-    border: 1px solid var(--lesys-border);
-    padding: 32px;
-    border-radius: 6px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.lesys-sub-card:hover {
-    transform: translateY(-4px);
-    border-color: #4facfe;
-}
-
-.lesys-sub-icon {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.lesys-sub-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 12px 0;
-    line-height: 1.3;
-}
-
-.lesys-sub-desc {
-    font-size: 0.9rem;
-    color: var(--lesys-text-muted);
-    line-height: 1.6;
-    margin: 0 0 24px 0;
-}
-
-/* Red Link Accent Call To Action */
-.lesys-sub-link {
-    color: var(--red);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: color 0.2s ease;
-}
-
-.lesys-sub-link .arrow {
-    margin-left: 6px;
-    transition: transform 0.2s ease;
-}
-
-.lesys-sub-link:hover {
-    color: var(--lesys-accent-red-hover);
-}
-
-.lesys-sub-link:hover .arrow {
-    transform: translateX(4px);
-}
-/* ==========================================================================
-   LeSys "Why Choose" Grid Framework Stylesheet
-   ========================================================================== */
-
-.lesys-why-choose {
-    padding: 100px 0;
-    /**border-bottom: 1px solid var(--lesys-border);**/
-    background-color: rgba(13, 21, 39, 0.2);
-    background-color: white;
-}
-
-.lesys-why-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.lesys-why-header .lesys-section-title {
-    margin-top: 10px;
-}
-
-/* 4-Column Balanced Structural Grid Matrix */
-.lesys-why-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-}
-
-@media (min-width: 576px) {
-    .lesys-why-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .lesys-why-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-/* Content Element Block Styling */
-.lesys-why-card {
-    position: relative;
-    padding-top: 24px;
-}
-
-/* Subtle Top Accent Divider Border Line */
-.lesys-why-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: var(--red);
-}
-
-.lesys-why-badge {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--lesys-text-muted);
-    font-family: monospace;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-}
-
-.lesys-why-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 16px 0;
-    line-height: 1.3;
-    color:black;
-}
-
-.lesys-why-desc {
-    font-size: 0.95rem;
-    color: var(--lesys-text-muted);
-    line-height: 1.6;
-    margin: 0;
-}
-.lesys-hero {
-    padding: 160px 0 120px 0;
-    text-align: left;
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-    border-bottom: 1px solid var(--lesys-border);
-}
-.lesys-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-
-  background: rgba(241, 90, 43, 0.12); /* ORANGE LIGHT */
-  color: var(--primary);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2%;
-}
-
-.lesys-icon img {
-  width: 24px;
-  height: 24px;
-}
-.hero-breadcrumbs {
-    margin-top: 25px;
-    font-size: 13px;
-    opacity: 0.85;
-}
-
-.hero-breadcrumbs a {
-    color: #fff;
-    text-decoration: none;
-    opacity: 0.8;
-}
-
-.hero-breadcrumbs a:hover {
-    opacity: 1;
-}
-
-.hero-breadcrumbs span {
-    margin: 0 8px;
-    color: rgba(255,255,255,0.6);
-}
-
-.hero-breadcrumbs .current {
-    color: #fff;
-    font-weight: 600;
-}
-</style>
 <?php 
-get_footer(); 
+/**
+ * Template Name: Business Applications Page
+ */
+get_header(); 
+
+// 1. Get the terms assigned to this post
+$terms = get_the_terms(get_the_ID(), 'solution_category');
+
+if ($terms && !is_wp_error($terms)) {
+    // Take the first category found
+    $current_term = $terms[0];
+    
+    // 1. Get the Name
+    $category_name = $current_term->name;
+    
+    // 2. Get the Content (Description)
+    // Note: WordPress stores the term content in the 'description' field
+    $category_content = term_description($current_term->term_id); 
+    
+    // 3. Output them where you need them
+    $term_id = $current_term->term_id;
+    $term_context = 'solution_category_' . $term_id;
+
+    // 2. Now you can fetch the fields using the context
+    $hero_video     = get_field('hero_background_ur', $term_context);
+    $hero_title     = get_field('hero_head', $term_context);
+    $hero_intro     = get_field('hero_intro', $term_context);
+    $trans_head     = get_field('transform_heading', $term_context);
+$trans_desc     = get_field('transform_desc', $term_context);
+$trans_b_head   = get_field('transformation_bullets_head', $term_context);
+$trans_b_raw    = get_field('transformation_bullets', $term_context);
+$trans_bullets  = $trans_b_raw ? explode("\n", str_replace("\r", "", $trans_b_raw)) : [];
+    // ... rest of your fields
+} else {
+    // Fallback if no category is assigned
+    $hero_video = '';
+    $hero_title = get_the_title();
+    $hero_intro = '';
+    $trans_desc     = '';
+$trans_b_head   = '';
+$trans_b_raw    = '';
+$trans_bullets  = [];
+}
+
+// 3. Query 'solution' posts in this category
+$solutions = get_posts([
+    'post_type'      => 'solution',
+    'posts_per_page' => -1,
+    'tax_query'      => [['taxonomy' => 'solution_category', 'field' => 'term_id', 'terms' => $term_id]],
+    'orderby'        => 'menu_order',
+    'order'          => 'ASC'
+]);
 ?>
+
+<header class="hero" <?php 
+    // Logic: If it's an image, set it as a background style
+    if (!empty($hero_video) && !str_ends_with(strtolower($hero_video), '.mp4')) {
+        echo 'style="background-image: url(' . esc_url($hero_video) . '); background-size: cover; background-position: center;"';
+    } 
+?>>
+    <?php 
+    // Logic: Only show the video tag if the file ends in .mp4
+    if (!empty($hero_video) && str_ends_with(strtolower($hero_video), '.mp4')) : ?>
+        <video id="earthVideo" class="hero-video" autoplay loop muted playsinline preload="auto" src="<?php echo esc_url($hero_video); ?>"></video>
+        <button id="soundToggle" class="video-sound-btn">🔊 Enable Sound</button>
+    <?php endif; ?>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+        <h1 class="hero-title"><?php echo wp_kses_post($hero_title); ?></h1>
+        <p class="hero-sub"><?php echo esc_html($hero_intro); ?></p>
+        <div class="hero-ctas">
+            <?php 
+            $btn1_text ='Get Started';
+            $btn1_url  = "#contact";
+            if ( ! empty($btn1_text) ) : ?>
+                <a href="<?php echo esc_url($btn1_url ?: '#contact'); ?>" class="btn btn-primary">
+                    <?php echo esc_html($btn1_text); ?> 
+                    <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            <?php endif; ?>
+
+            <?php 
+            $btn2_text = 'Explore Capabilities';
+            $btn2_url  = "#capabilities";
+            if ( ! empty($btn2_text) ) : ?>
+                <a href="<?php echo esc_url($btn2_url ?: '#capabilities'); ?>" class="btn btn-ghost">
+                    <?php echo esc_html($btn2_text); ?>
+                </a>
+            <?php endif; ?>
+        </div>
+                <!-- Breadcrumbs -->
+        <?php if (shortcode_exists('lesys_breadcrumbs')) {
+    echo do_shortcode('[lesys_breadcrumbs]');
+} ?>
+    </div>
+</header>
+
+<div class="page-wrapper main-wrapper" id="capabilities">
+    <aside class="sticky-sidebar">
+        <h3>Our Solutions - <?php echo esc_html($category_name); ?></h3>
+        <ul>
+            <?php foreach ($solutions as $sol) : ?>
+                <li><a href="#<?php echo sanitize_title($sol->post_title); ?>"><?php echo esc_html($sol->post_title); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+        <div style="margin-top: 20px;">
+        <a href="<?php echo esc_url(get_post_type_archive_link('solution')); ?>" class="explore-btn" style="display: block; background: var(--blue); color: #fff; text-align: center; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+            Explore All Solutions
+        </a>
+    </div>
+    </aside>
+
+    <div class="content-area">
+        <section class="intro-text"><p><?php echo ($category_content); ?></p></section>
+
+        <section class="transform-section">
+            <h2><?php echo esc_html($trans_head); ?></h2>
+            <p><?php echo esc_html($trans_desc); ?></p>
+            
+            <div class="transform-details" style="margin-top: 25px;">
+                <?php if($trans_b_head) echo '<p>' . esc_html($trans_b_head) . '</p>'; ?>
+                <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                    <?php foreach ($trans_bullets as $b) : if(!empty(trim($b))) : ?>
+                        <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">• <?php echo esc_html(trim($b)); ?></li>
+                    <?php endif; endforeach; ?>
+                </ul>
+            </div>
+        </section>
+
+        <?php foreach ($solutions as $sol) : 
+            $banner = get_field('banner_image', $sol->ID);
+            $caps = explode("\n", str_replace("\r", "", get_field('capabilities', $sol->ID)));
+            $bens = explode("\n", str_replace("\r", "", get_field('benefits', $sol->ID)));
+        ?>
+            <section id="<?php echo sanitize_title($sol->post_title); ?>" class="solution-detail-card">
+                <?php if($banner) : ?>
+                    <div class="solution-banner"><img src="<?php echo esc_url($banner['url']); ?>" alt="<?php echo esc_attr($sol->post_title); ?>"></div>
+                <?php endif; ?>
+                <h2><?php echo esc_html($sol->post_title); ?></h2>
+                <p><?php echo (esc_html(strip_tags($sol->post_content))); ?></p>
+                <div class="specs-grid">
+                    <div class="list-column"><h3>Capabilities</h3><ul><?php foreach($caps as $c) if(!empty(trim($c))) echo "<li>".esc_html(trim($c))."</li>"; ?></ul></div>
+                    <div class="list-column"><h3>Benefits</h3><ul><?php foreach($bens as $b) if(!empty(trim($b))) echo "<li>".esc_html(trim($b))."</li>"; ?></ul></div>
+                </div>
+            </section>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php
+// Get category term
+$terms = get_the_terms(get_the_ID(), 'solution_category');
+$term = ($terms && !is_wp_error($terms)) ? $terms[0] : null;
+
+if ($term) : 
+    $ctx = 'solution_category_' . $term->term_id;
+?>
+<section class="why-choose-section">
+    <h2 style="text-align: center; margin-bottom: 40px;">Why Choose LeSys?</h2>
+    <div class="why-choose-grid">
+        <?php for ($i = 1; $i <= 4; $i++) : 
+            $title = get_field('wc_title_' . $i, $ctx);
+            $desc  = get_field('wc_desc_' . $i, $ctx);
+            if ($title) : ?>
+                <div class="why-item">
+                    <h3><?php echo esc_html($title); ?></h3>
+                    <p><?php echo esc_html($desc); ?></p>
+                </div>
+            <?php endif; 
+        endfor; ?>
+    </div>
+</section>
+<?php endif; ?>
+    <?php 
+get_template_part('template-parts/content', 'successstory'); 
+get_template_part('template-parts/content', 'trustedfoundations'); 
+get_template_part('template-parts/content', 'contact'); ?>
+<?php 
+echo '<script type="application/ld+json">';
+echo json_encode([
+    "@context" => "https://schema.org",
+    "@type" => "BreadcrumbList",
+    "itemListElement" => [
+        [
+            "@type" => "ListItem",
+            "position" => 1,
+            "name" => "Home",
+            "item" => home_url()
+        ],
+        [
+            "@type" => "ListItem",
+            "position" => 2,
+            "name" => "Solutions",
+            "item" => get_post_type_archive_link('solution')
+        ],
+        [
+            "@type" => "ListItem",
+            "position" => 3,
+            "name" => get_the_title(),
+            "item" => get_permalink()
+        ]
+    ]
+]);
+echo '</script>';?>
+<?php get_footer(); ?>

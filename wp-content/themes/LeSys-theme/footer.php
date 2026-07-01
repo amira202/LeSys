@@ -5,7 +5,7 @@
   <div class="container">
     <div class="foot-grid">
       <div class="fb">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand brandf">
           
           <?php 
           $footer_logo = get_theme_mod( 'lesys_footer_logo' );
@@ -164,7 +164,7 @@
     align-items: center;
     gap: 12px;
 
-    background: #e2462b;
+    background: var(--red);
     color: #fff;
 
     padding: 14px 20px;
@@ -181,7 +181,7 @@
 
 .talk-to-expert-btn:hover {
     transform: translateY(-3px);
-    background: #c93c22;
+    background: var(--red-d);
     color: #fff;
 } 
 
@@ -237,7 +237,7 @@
 
     overflow: hidden;
 
-    background: #e2462b;
+    background: var(--red);
     color: #fff;
 
     border-radius: 50px;

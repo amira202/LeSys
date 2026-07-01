@@ -71,7 +71,7 @@ define( 'NONCE_SALT',       '<a=|| wm{9a4;Cl]}2^<V?X3B]vlWq}p(chRE7Eb&k8K;-|R%O|
  *
  * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix
  */
-$table_prefix = 'lesys_';
+$table_prefix = 'LeSys_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -85,7 +85,7 @@ $table_prefix = 'lesys_';
  *
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 define( 'WPCF7_AUTOP', false );

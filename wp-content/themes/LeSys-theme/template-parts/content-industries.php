@@ -14,11 +14,13 @@ $items = [];
 if ($industries->have_posts()) {
     while ($industries->have_posts()) {
         $industries->the_post();
+$hero = get_field('hero_section') ?: [];
 
+$bg = $hero['background_image'] ?? '';
         $items[] = [
             'title' => get_the_title(),
             'content' => get_the_content(),
-            'img' => get_field('industry_image'),
+            'img' => $bg,
             'tags' => get_the_tags(),
             'url' => get_permalink()
         ];
@@ -58,7 +60,7 @@ $chunks = array_chunk($items, 3);
 
                 <!-- IMAGE -->
                 <?php if (!empty($item['img'])) : ?>
-                  <img class="bg" src="<?php echo esc_url($item['img']['url']); ?>" alt="">
+                  <img class="bg" src="<?php echo esc_url($item['img']); ?>" alt="">
                 <?php 
               else:
               if($num==0||$num==3):?>
@@ -126,15 +128,24 @@ $chunks = array_chunk($items, 3);
     </div>
 
     <!-- NAV BUTTONS -->
+<div class="sector-footer">
+
     <div class="sector-nav">
-      <button class="round prev" aria-label="Previous" id="sectorPrev">
-        <i class="fa-solid fa-arrow-left"></i>
-      </button>
-      <button class="round next filled" aria-label="Next" id="sectorNext">
-        <i class="fa-solid fa-arrow-right"></i>
-      </button>
+        <button class="round prev" aria-label="Previous" id="sectorPrev">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <button class="round next filled" aria-label="Next" id="sectorNext">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
     </div>
 
+    <a href="<?php echo esc_url(get_post_type_archive_link('industry')); ?>" class="explore-link">
+        Explore All
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+
+</div>
   </div>
 </section>
 
@@ -509,6 +520,44 @@ $chunks = array_chunk($items, 3);
 
 .sector:hover .shine::before{
     left:150%;
+}
+.sector-footer{
+    position:relative;
+    margin-top:60px;
+    min-height:52px;
+}
+
+/* Keep navigation perfectly centered */
+.sector-nav{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+}
+
+/* Position Explore All on the right */
+.explore-link{
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s ease;
+}
+
+.explore-link i{
+    transition:transform .3s ease;
+}
+
+.explore-link:hover i{
+    transform:translateX(6px);
 }
 </style>
 

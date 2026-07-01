@@ -27,7 +27,7 @@
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand">
       
       <?php 
-      $header_logo = get_theme_mod( 'lesys_footer_logo' );
+      $header_logo = get_theme_mod( 'lesys_header_logo' );
       if ( ! empty( $header_logo ) ) : 
       ?>
         <!-- Dynamic Uploaded Image Logo -->

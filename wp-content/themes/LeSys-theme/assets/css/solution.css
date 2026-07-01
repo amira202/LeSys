@@ -1,0 +1,207 @@
+    .page-wrapper { max-width: 1000px; margin: 60px auto; padding: 0 20px; font-family: sans-serif; }
+    .intro-text { font-size: 1.1rem; color: #4a5568; margin-bottom: 50px; }
+    .transform-section { margin-bottom: 60px; }
+    /* Add space between heading and paragraph text */
+.transform-section h2 {
+    margin-bottom: 20px; /* Adjust this value to increase or decrease space */
+}
+
+/* Ensure consistent spacing for other headings if needed */
+h2 {
+    margin-bottom: 15px;
+}
+    /* Solution Card Styling */
+    .solution-detail-card {
+        display: flex; flex-direction: column; padding: 40px;
+        background: #ffffff; border-radius: 16px;
+        border: 1px solid #e2e8f0; margin-bottom: 30px;
+        transition: 0.3s;
+    }
+    .solution-detail-card:hover { border-color: var(--blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .solution-icon { width: 60px; height: 60px; margin-bottom: 20px; object-fit: contain; }
+    .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+    .list-column h3 { color: var(--blue); font-size: 1.1rem; margin-bottom: 10px; }
+    .list-column ul { list-style-type: none; padding: 0; }
+    .list-column ul li { margin-bottom: 8px; padding-left: 20px; position: relative; color: #4a5568; }
+    .list-column ul li::before { content: "✓"; color: var(--blue-l); position: absolute; left: 0; font-weight: bold; }
+    /* Layout Wrapper */
+.main-wrapper { display: flex; align-items: flex-start; gap: 40px; }
+.content-area { flex: 3; }
+
+/* Sticky Sidebar */
+.sticky-sidebar { 
+    flex: 1; 
+    position: sticky; 
+    top: 100px; /* Adjust based on your header height */
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+.sticky-sidebar h3 { font-size: 1.1rem; color: var(--blue-d); margin-bottom: 15px; }
+.sticky-sidebar ul { list-style: none; padding: 0; }
+.sticky-sidebar li { margin-bottom: 10px; }
+.sticky-sidebar a { text-decoration: none; color: #4a5568; font-size: 0.95rem; }
+.sticky-sidebar a:hover { color: var(--blue); }
+/* Ensure the banner stays within the card */
+.solution-banner {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px; /* Smooth corners */
+    margin-bottom: 20px; /* Space between banner and heading */
+}
+
+.solution-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Add space between heading and text */
+.solution-detail-card h2 {
+    margin-top: 0;
+    margin-bottom: 15px; /* Adds space between title and description */
+}
+
+.solution-detail-card p {
+    margin-top: 0;
+    margin-bottom: 25px; /* Adds space between description and specs-grid */
+}
+html { scroll-behavior: smooth; }
+
+/* Highlight effect for sticky menu */
+.sticky-sidebar ul li a {
+    transition: color 0.3s ease, border-left 0.3s ease;
+    padding-left: 10px;
+    border-left: 3px solid transparent;
+}
+
+/* Sidebar Container */
+.sticky-sidebar {
+    position: sticky;
+    top: 100px;
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Fix for the vertical border alignment */
+.sticky-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 3px solid #cbd5e0; /* This is the vertical line */
+    margin-left: 5px; /* Offset to align with parent if needed */
+}
+
+.sticky-sidebar li {
+    margin-bottom: 12px;
+}
+
+/* Target the links to align with the vertical line */
+.sticky-sidebar ul li a {
+    text-decoration: none;
+    color: #4a5568;
+    font-size: 0.95rem;
+    display: block;
+    padding-left: 15px; /* Creates space between the line and text */
+    transition: all 0.3s ease;
+}
+
+/* Hover and Active State */
+.sticky-sidebar ul li a:hover,
+.sticky-sidebar ul li a.active {
+    color: var(--red);
+    border-left: 3px solid var(--red); /* Highlight line color */
+    margin-left: -3px; /* Pulls the highlight into alignment with the base border */
+    font-weight: 600;
+}
+@media (max-width: 768px) { .sticky-sidebar { display: none; } }
+.why-choose-lesys {
+    padding: 80px 20px;
+    background-color: #ffffff;
+}
+
+
+.why-card h3 {
+    color: var(--blue); /* Ensure this maps to your brand blue */
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.why-card p {
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+/* Add to your existing style block */
+.why-choose-section {
+    margin: 60px 0;
+    padding: 40px;
+    background: #f8fafc;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+}
+
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px; /* Limits width to match your content columns */
+    margin: 60px auto;  /* Centers the whole section on the page */
+}
+
+.why-item h3 {
+    color: var(--blue);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.why-item p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.why-item {
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.why-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* Soft lift effect */
+}
+.solution-detail-card {
+    /* Adjust '120px' to match the height of your sticky header */
+    scroll-margin-top: 120px; 
+}
+.hero{
+    height:815px;
+}
+.hero-breadcrumbs {
+    margin-top: 25px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.hero-breadcrumbs a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.hero-breadcrumbs a:hover {
+    opacity: 1;
+}
+
+.hero-breadcrumbs span {
+    margin: 0 8px;
+    color: rgba(255,255,255,0.6);
+}
+
+.hero-breadcrumbs .current {
+    color: #fff;
+    font-weight: 600;
+}

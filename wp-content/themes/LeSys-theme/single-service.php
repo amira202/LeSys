@@ -139,7 +139,7 @@ $cta2_url = get_field('cta_button_2_url') ?: get_post_type_archive_link('service
 <section class="related-services-section" id="related-services">
     <div class="container">
         <span class="section-label">Related Services</span>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia provident omnis accusamus voluptatibus facere laborum, libero aut voluptas consequuntur, veritatis unde ut blanditiis eius fuga magnam corporis voluptate. Alias, quidem.</p>
+        <p>Driving growth through digital excellence. We specialize in transforming business operations through expert technology assessment, robust cybersecurity frameworks, and scalable infrastructure strategies, ensuring your enterprise remains competitive, efficient, and resilient.</p>
         <div class="related-grid">
             <?php
             // Get the current service's categories

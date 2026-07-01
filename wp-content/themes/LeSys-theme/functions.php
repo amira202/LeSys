@@ -86,6 +86,23 @@ function my_theme_enqueue_assets() {
             true
         );
     }
+         if ( is_singular( 'solution' ) ) {
+
+        wp_enqueue_style(
+            'lesys-solution',
+            get_template_directory_uri() . '/assets/css/solution.css',
+            [],
+            '1.0.0'
+        );
+
+        wp_enqueue_script(
+            'lesys-solution',
+            get_template_directory_uri() . '/assets/js/solution.js',
+            [],
+            '1.0.0',
+            true
+        );
+    }
 }
 // تفعيل الدالة وربطها بخطاف التحميل الرسمي لووردبريس
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_assets' );
@@ -353,14 +370,14 @@ function lesys_header_customize_register( $wp_customize ) {
     ) );
 
     // 2. Shared Logo Control (linked to the same setting)
-    $wp_customize->add_setting( 'lesys_footer_logo', array(
+    $wp_customize->add_setting( 'lesys_header_logo', array(
         'default'           => '',
         'sanitize_callback' => 'esc_url_raw',
     ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'lesys_header_logo_control', array(
         'label'       => __( 'Website Logo', 'lesys' ),
         'section'     => 'lesys_header_section',
-        'settings'    => 'lesys_footer_logo',
+        'settings'    => 'lesys_header_logo',
         'description' => __( 'Upload your logo. If left blank, your default custom inline SVG is generated.', 'lesys' ),
     ) ) );
 
@@ -483,6 +500,11 @@ function lesys_breadcrumbs_shortcode() {
         <?php }?>
         <?php  if (is_singular('platform') && ! is_post_type_archive('platform')) {?>
         <a href="<?php echo get_post_type_archive_link('platform'); ?>">Platforms</a>
+        <span>/</span>
+        <span class="current"><?php echo get_the_title(); ?></span>
+        <?php }?>
+        <?php  if (is_singular('solution') && ! is_post_type_archive('solution')) {?>
+        <a href="<?php echo get_post_type_archive_link('solution'); ?>">Solutions</a>
         <span>/</span>
         <span class="current"><?php echo get_the_title(); ?></span>
         <?php }?>
@@ -782,3 +804,13 @@ add_action( 'wp_enqueue_scripts', function() {
         wp_enqueue_script( 'jquery-validate', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js', array('jquery'), '1.19.5', true );
     }
 }, 30 );
+
+function register_solution_taxonomy() {
+    register_taxonomy('solution_category', 'solution', array(
+        'hierarchical' => true,
+        'label' => 'Solution Categories',
+        'show_ui' => true,
+        'show_in_rest' => true, // Enables Gutenberg/ACF support
+    ));
+}
+add_action('init', 'register_solution_taxonomy');

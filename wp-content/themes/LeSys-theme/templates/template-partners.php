@@ -107,7 +107,6 @@ get_header(); ?>
 
 /* CTA Buttons */
 .btn-primary { 
-    background: #e65100; /* Matching the orange CTA in image_064cda.jpg */
     color: #fff; padding: 15px 30px; border-radius: 4px; font-weight: 700; text-decoration: none; 
 }
 .btn-secondary { 

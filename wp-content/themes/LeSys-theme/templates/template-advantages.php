@@ -50,7 +50,7 @@ get_header(); ?>
 
 /* CTA Polish */
 .btn-primary { 
-    background: #e65100; color: #fff; padding: 18px 36px; 
+    padding: 18px 36px; 
     border-radius: 6px; font-weight: 700; transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(230, 81, 0, 0.3);
 }
@@ -204,8 +204,6 @@ get_header(); ?>
 /* Orange CTA Button */
 .btn-primary { 
     display: inline-block; 
-    background: #e65100; 
-    color: #fff; 
     padding: 16px 32px; 
     border-radius: 4px; 
     font-weight: 700; 
@@ -219,6 +217,6 @@ get_header(); ?>
     .hero-visual { display: none; }
 }
 </style>
-</style>
+
 
 <?php get_footer(); ?>
