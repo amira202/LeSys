@@ -848,3 +848,41 @@ function register_and_enqueue_job_board_dependencies() {
     }
 }
 add_action('wp_enqueue_scripts', 'register_and_enqueue_job_board_dependencies', 10);
+
+/**
+ * Replace localhost URLs with live domain.
+ */
+function lesys_replace_localhost_url($url) {
+
+    $localhost = 'http://localhost/wordpress';
+    $live      = 'https://beta.lesys.com';
+
+    return str_replace($localhost, $live, $url);
+}
+
+// WordPress generated URLs
+add_filter('home_url', 'lesys_replace_localhost_url');
+add_filter('site_url', 'lesys_replace_localhost_url');
+add_filter('content_url', 'lesys_replace_localhost_url');
+add_filter('plugins_url', 'lesys_replace_localhost_url');
+add_filter('theme_file_uri', 'lesys_replace_localhost_url');
+add_filter('script_loader_src', 'lesys_replace_localhost_url');
+add_filter('style_loader_src', 'lesys_replace_localhost_url');
+add_filter('wp_get_attachment_url', 'lesys_replace_localhost_url');
+
+// Upload URLs
+add_filter('upload_dir', function($uploads) {
+    $uploads['baseurl'] = str_replace(
+        'http://localhost/wordpress',
+        'https://beta.lesys.com',
+        $uploads['baseurl']
+    );
+
+    $uploads['url'] = str_replace(
+        'http://localhost/wordpress',
+        'https://beta.lesys.com',
+        $uploads['url']
+    );
+
+    return $uploads;
+});
