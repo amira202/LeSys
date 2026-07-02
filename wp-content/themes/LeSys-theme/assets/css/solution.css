@@ -1,4 +1,5 @@
-    .page-wrapper { max-width: 1000px; margin: 60px auto; padding: 0 20px; font-family: sans-serif; }
+
+   .page-wrapper { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
     .intro-text { font-size: 1.1rem; color: #4a5568; margin-bottom: 50px; }
     .transform-section { margin-bottom: 60px; }
     /* Add space between heading and paragraph text */
@@ -178,7 +179,7 @@ html { scroll-behavior: smooth; }
     scroll-margin-top: 120px; 
 }
 .hero{
-    height:815px;
+    height:850px;
 }
 .hero-breadcrumbs {
     margin-top: 25px;
@@ -204,4 +205,14 @@ html { scroll-behavior: smooth; }
 .hero-breadcrumbs .current {
     color: #fff;
     font-weight: 600;
+}
+   p{
+    line-height: 1.9rem;
+   }
+   .why-item.is-visible:hover {
+  animation: subtle-pulse 2s infinite;
+  transform: translateY(-5px);
+  padding: 10%;
+  border-radius: 28px;
+  box-shadow: 0 24px 113px rgb(217, 43, 40);
 }

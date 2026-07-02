@@ -43,7 +43,7 @@ $short_desc = $hero['short_description'] ?? '';
         <!-- ✅ CTA BUTTONS -->
         <div class="hero-cta">
 
-            <a href="<?php echo esc_url($cta_primary_link); ?>" class="btn-primary">
+            <a href="#contact" class="btn-primary">
                 <?php echo esc_html($cta_primary); ?>
             </a>
 

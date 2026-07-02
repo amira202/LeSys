@@ -52,7 +52,6 @@ $solutions = get_posts([
     'order'          => 'ASC'
 ]);
 ?>
-
 <header class="hero" <?php 
     // Logic: If it's an image, set it as a background style
     if (!empty($hero_video) && !str_ends_with(strtolower($hero_video), '.mp4')) {
@@ -120,7 +119,7 @@ $solutions = get_posts([
             <p><?php echo esc_html($trans_desc); ?></p>
             
             <div class="transform-details" style="margin-top: 25px;">
-                <?php if($trans_b_head) echo '<p>' . esc_html($trans_b_head) . '</p>'; ?>
+                <?php if($trans_b_head) echo '<p><b>' . esc_html($trans_b_head) . '</b></p>'; ?>
                 <ul style="list-style: none; padding: 0; margin-top: 10px;">
                     <?php foreach ($trans_bullets as $b) : if(!empty(trim($b))) : ?>
                         <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">• <?php echo esc_html(trim($b)); ?></li>
@@ -203,4 +202,133 @@ echo json_encode([
     ]
 ]);
 echo '</script>';?>
+<style>
+    /* 1. Initial State: Cards are hidden and shifted down */
+.why-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 2. Active State: Cards are visible and in place (added by JS below) */
+.why-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Stagger the animation delay so they appear one by one */
+/* Item 1 */
+.why-choose-grid .why-item:nth-child(1) { transition-delay: 0.1s; }
+/* Item 2 */
+.why-choose-grid .why-item:nth-child(2) { transition-delay: 0.3s; }
+/* Item 3 */
+.why-choose-grid .why-item:nth-child(3) { transition-delay: 0.5s; }
+/* Item 4 */
+.why-choose-grid .why-item:nth-child(4) { transition-delay: 0.7s; }
+
+/* Optional: Super subtle continuous "pulse" breathing effect after loading */
+@keyframes subtle-pulse {
+    0% { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.15); }
+    100% { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+}
+
+.why-item.is-visible:hover {
+    animation: subtle-pulse 2s infinite;
+    transform: translateY(-5px); /* Still lift on hover */
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        root: null, // use the viewport
+        threshold: 0.2 // trigger when 20% of the item is visible
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Optional: stop observing after it has triggered once
+                // observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Target all the items inside the grid
+    document.querySelectorAll('.why-choose-grid .why-item').forEach((item) => {
+        observer.observe(item);
+    });
+});
+</script>
+
+ <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("earthVideo");
+    const btn = document.getElementById("soundToggle");
+    const heroSection = document.querySelector(".hero");
+    let sectionVisible = false;
+
+    // 1. Initialize State from LocalStorage
+    const isSoundEnabled = localStorage.getItem("soundEnabled") === "true";
+    video.muted = !isSoundEnabled;
+    btn.textContent = isSoundEnabled ? "🔊 Sound On" : "🔇 Sound Off";
+
+    // 2. Play helper: Ensures we only play if visible and not hidden
+    const attemptPlay = () => {
+        if (sectionVisible && !document.hidden) {
+            video.play().catch(e => console.log("Autoplay prevented", e));
+        }
+    };
+
+    // 3. Toggle Logic
+    btn.addEventListener("click", () => {
+        const newSoundState = video.muted; // current state
+        video.muted = !newSoundState;
+        localStorage.setItem("soundEnabled", (!newSoundState).toString());
+        btn.textContent = video.muted ? "🔇 Sound Off" : "🔊 Sound On";
+        attemptPlay();
+    });
+
+    // 4. Observer: Stop/Play when scrolling
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            sectionVisible = entry.isIntersecting;
+            if (sectionVisible) {
+                attemptPlay();
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(heroSection);
+
+    // 5. Tab Visibility: Stop/Play when switching tabs
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            video.pause();
+        } else {
+            attemptPlay();
+        }
+    });
+});
+    </script>
+<style>
+.video-sound-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+</style>
 <?php get_footer(); ?>

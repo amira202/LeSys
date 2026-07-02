@@ -8,7 +8,7 @@ $button_url = get_field('platforms_button_url');
 // Query your 'platform' custom post type dynamically
 $platforms_query = new WP_Query([
     'post_type'      => 'platform',
-    'posts_per_page' => 5, // Fetch all platforms
+    'post__in'       => [541,542, 543,544,545,546],
     'post_status'    => 'publish',
     'orderby'        => 'menu_order',
     'order'          => 'ASC'
@@ -33,7 +33,7 @@ $features=get_field('platforms_features', $p_id);
         if (!empty($m1['feature_name'])) $compiled_metrics[] = [$m1['feature_name'], $m1['feature_percentage_value'], $m1['platform_feature_suffix'], $m1['platform_feature_percentage']];
         if (!empty($m2['feature_name'])) $compiled_metrics[] = [$m2['feature_name'], $m2['feature_percentage_value'], $m2['platform_feature_suffix'], $m2['platform_feature_percentage']];
         if (!empty($m3['feature_name'])) $compiled_metrics[] = [$m3['feature_name'], $m3['feature_percentage_value'], $m3['platform_feature_suffix'], $m3['platform_feature_percentage']];
-
+$feat_image_url = get_the_post_thumbnail_url(get_the_ID());
         $platforms_list[] = [
             'key'        => sanitize_title(get_the_title()), // forms a clean data slug key
             'nav_label'  => get_the_title(),
@@ -41,7 +41,8 @@ $features=get_field('platforms_features', $p_id);
             'tagline'    =>get_the_category()[0]->name ?? '', // Uses first category as tagline if available        
             'lead'       => get_the_content(), // pulling the primary editor description text
             'visual'     => get_field('platform_visual', $p_id),
-            'metrics'    => $compiled_metrics
+            'metrics'    => $compiled_metrics,
+            'image'      => $feat_image_url
         ];
     }
     wp_reset_postdata();
@@ -90,10 +91,13 @@ $features=get_field('platforms_features', $p_id);
       <!-- Main Display Panel Group Layout (Pre-filled with post 1 data on page load) -->
       <div class="plat-card">
         <div class="plat-visual" id="platVisual">
-          <?php echo $initial['visual']; ?>
+          <?php if(empty($initial['image'])){?>
+          <?php echo $initial['visual']; }
+          else{?>
+          <img src="<?php echo $initial['image'];?>"/>
         </div>
         <div>
-            <?php 
+            <?php }
         $first_two = mb_substr(wp_kses_post($initial['title_html']), 0, 2); // Get first 2 letters
         $remainder = mb_substr(wp_kses_post($initial['title_html']), 2);    // Get everything else
         ?>

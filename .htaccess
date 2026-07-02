@@ -20,3 +20,10 @@ RewriteRule . /wordpress/index.php [L]
 # Any changes to the directives between these markers will be overwritten.
 
 # END Hotlinking
+<IfModule mod_mime.c>
+    AddType video/mp4 .mp4
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Accept-Ranges bytes
+</IfModule>

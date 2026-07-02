@@ -28,7 +28,7 @@ function render_logo_span($i) {
 
                 // Render loops
                 for ($j = 0; $j < 2; $j++) { // Run twice for seamless loop
-                    for ($i = 1; $i <= 8; $i++) {
+                    for ($i = 1; $i <= 7; $i++) {
                         render_logo_span($i);
                     }
                 }

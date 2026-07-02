@@ -2,88 +2,69 @@
      OUTCOME TABS — horizontal expanding tab strip
      Tab content driven by data attributes; click or hover to expand.
      ================================================================= -->
-<?php
-$tab1 = get_field('tab_1');
-$tab2 = get_field('tab_2');
-$tab3 = get_field('tab_3');
-$tab4 = get_field('tab_4');
-$tab5 = get_field('tab_5');
-$tab6 = get_field('tab_6');
-?>
 
-<section class="tabsec">
+<section class="tabsec" id="#solutions">
     <div class="container">
         <div class="tab-bar" id="tabBar">
 
             <div class="tb-intro">
-
                 <div class="eyebrow" style="align-self:flex-start;">
                     <?php the_field('outcome_eyebrow'); ?>
                 </div>
-
                 <div>
-                    <h3>
-                        <?php echo wp_kses_post(get_field('outcome_title')); ?>
-                    </h3>
-
-                    <p>
-                        <?php the_field('outcome_description'); ?>
-                    </p>
+                    <h3><?php echo wp_kses_post(get_field('outcome_title')); ?></h3>
+                    <p><?php 
+                    the_field('outcome_description');?></p>
                 </div>
-
                 <div class="nav">
-                    <button class="round" id="tabPrev">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-
-                    <button class="round filled" id="tabNext">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    <button class="round" id="tabPrev"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="round filled" id="tabNext"><i class="fa-solid fa-arrow-right"></i></button>
                 </div>
-
             </div>
 
             <?php
-            $tabs = [
-                $tab1,
-                $tab2,
-                $tab3,
-                $tab4,
-                $tab5,
-                $tab6
-            ];
+            // 1. Fetch all terms from the solution_category taxonomy
+            $terms = get_terms([
+                'taxonomy'   => 'solution_category',
+                'orderby'    => 'menu_order', // Or 'name' / 'count'
+                'order'      => 'ASC',
+                'hide_empty' => false,
+            ]);
 
-            foreach ($tabs as $index => $tab) :
-            ?>
+            // 2. Check if terms exist and loop
+            if (!empty($terms) && !is_wp_error($terms)) :
+                foreach ($terms as $index => $term) :
+                    // Get custom field values for the term (ACF syntax)
+                    $small_text = get_field('hero_head', $term); // Replace with your actual field name
+                    $short=get_field('hero_intro',$term);
+                    ?>
 
-            <div class="tab t<?php echo $index + 1; ?> <?php echo $index === 1 ? 'active' : ''; ?>"
-                 data-idx="<?php echo $index; ?>">
+                    <div class="tab t<?php echo $index + 1; ?> <?php echo $index === 0 ? 'active' : ''; ?>"
+                         data-idx="<?php echo $index; ?>"
+                         onclick="window.location.href='<?php echo esc_url(get_term_link($term)); ?>'">
 
-                <div class="num">
-                    <?php echo sprintf('%02d', $index + 1); ?>
-                </div>
+                        <div class="num">
+                            <?php echo sprintf('%02d', $index + 1); ?>
+                        </div>
 
-                <span class="open-ico">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </span>
+                        <span class="open-ico">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </span>
 
-                <div class="body">
-                    <div class="small">
-                        <?php echo esc_html($tab['small']); ?>
+                        <div class="body">
+                            <div class="small">
+                                <?php echo esc_html($small_text); ?>
+                            </div>
+
+                            <h4><?php echo esc_html($term->name);?></h4>
+
+                            <p><?php  
+                    echo mb_strimwidth($short, 0, 90, '...');?></p>
+                        </div>
                     </div>
 
-                    <h4>
-                        <?php echo esc_html($tab['title']); ?>
-                    </h4>
-
-                    <p>
-                        <?php echo esc_html($tab['description']); ?>
-                    </p>
-                </div>
-
-            </div>
-
-            <?php endforeach; ?>
+                <?php endforeach; 
+            endif; ?>
 
         </div>
     </div>

@@ -4,12 +4,17 @@
 
 /* Sticky Brochure Button in Sidebar */
 /* Tab Fix */
-.platform-tabs { background: #fff; border-bottom: 1px solid var(--border); }
+.platform-tabs {border-bottom: 1px solid var(--border); }
+.platform-tabs {
+  background: #2f6995;
+  color: white;
+}
 .tab-link { 
     background: none; border: none; padding: 15px 20px; 
     color: var(--text-light); font-weight: 600; cursor: pointer; 
+    font-size:16px;
 }
-.tab-link.active { color: var(--navy); border-bottom: 3px solid var(--blue); }
+.tab-link.active { border-bottom: 3px solid var(--red); }
 /* New Grid for Image Left, Content Right */
 .platform-hero-grid {
     display: grid;
@@ -381,7 +386,7 @@
     align-self: start; /* Prevents stretching */
 }
 /* 1. Unify Spacing */
-.platform-main { padding-top: 80px; padding-bottom: 80px; }
+.platform-main { padding-top: 20px; padding-bottom: 20px; }
 
 /* 2. Standardize Cards (Benefits & Capabilities) */
 .modern-card, .capabilities-split-section {

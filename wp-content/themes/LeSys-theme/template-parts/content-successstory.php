@@ -1,4 +1,4 @@
-<section class="section" style="padding-top:30px;">
+<section class="section menu-boundary" id="startnav" style="padding-top:30px;">
   <div class="container">
     <div class="story">
       <div class="story-bg"></div>

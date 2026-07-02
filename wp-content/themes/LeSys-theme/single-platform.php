@@ -137,6 +137,9 @@ if ($c = get_field('capabilities')):
                 </div>
         <?php endif; endforeach; ?>
     </div>
+                    <?php if ($url = get_field('brochure_url')): ?>
+           <div style="margin-bottom:60px;"> <a href="<?php echo esc_url($url); ?>" class="btn-download-sticky" target="_blank">Download Brochure</a></div>
+        <?php endif; ?>
 </section>
 <?php endif; ?>
         </div>
@@ -154,9 +157,7 @@ if ($c = get_field('capabilities')):
                 <p><?php echo nl2br(esc_html($i_for)); ?></p>
             </div>
         <?php endif; ?>
-                <?php if ($url = get_field('brochure_url')): ?>
-            <a href="<?php echo esc_url($url); ?>" class="btn-download-sticky" target="_blank">Download Brochure</a>
-        <?php endif; ?>
+
     </div>
 </aside>
 <?php }?>

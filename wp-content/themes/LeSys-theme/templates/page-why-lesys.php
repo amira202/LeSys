@@ -172,5 +172,8 @@ get_template_part('template-parts/content', 'contact'); ?>
 .ac{
   color: #3c6481;
 }
+.right-side.hero-text-side{
+    line-height:33px;
+}
   </style>
 <?php get_footer(); ?>

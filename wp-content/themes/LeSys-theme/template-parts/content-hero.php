@@ -16,7 +16,6 @@
        preload="auto"
        src="<?php echo esc_url($video_url); ?>">
 </video>
-
 <button id="soundToggle" class="video-sound-btn">
     🔊 Enable Sound
 </button>
@@ -70,62 +69,56 @@
   </div>
 </header>
 <script>
+    
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("earthVideo");
     const btn = document.getElementById("soundToggle");
-
-    btn.addEventListener("click", function () {
-        video.muted = false;
-        video.play();
-        btn.style.display = "none";
-    });
-    //btn.click(); // Trigger click to enable sound on first interaction
     const heroSection = document.querySelector(".hero");
+    let sectionVisible = false;
 
-    let soundEnabled = false;
-    let sectionVisible = true;
+    // 1. Initialize State from LocalStorage
+    const isSoundEnabled = localStorage.getItem("homesoundEnabled") === "true";
+    video.muted = !isSoundEnabled;
+    btn.textContent = isSoundEnabled ? "🔊 Sound On" : "🔇 Sound Off";
 
-    // Enable sound after user interaction
+    // 2. Play helper: Ensures we only play if visible and not hidden
+    const attemptPlay = () => {
+        if (sectionVisible && !document.hidden) {
+            video.play().catch(e => console.log("Autoplay prevented", e));
+        }
+    };
+
+    // 3. Toggle Logic
     btn.addEventListener("click", () => {
-        soundEnabled = true;
-        video.muted = false;
-        video.play();
-
-        btn.textContent = "🔊 Sound On";
+        const newSoundState = video.muted; // current state
+        video.muted = !newSoundState;
+        localStorage.setItem("homesoundEnabled", (!newSoundState).toString());
+        btn.textContent = video.muted ? "🔇 Sound Off" : "🔊 Sound On";
+        attemptPlay();
     });
 
-    // Detect hero visibility
+    // 4. Observer: Stop/Play when scrolling
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-
             sectionVisible = entry.isIntersecting;
-
             if (sectionVisible) {
-                if (!document.hidden) {
-                    video.play().catch(() => {});
-                }
+                attemptPlay();
             } else {
                 video.pause();
             }
-
         });
-    }, {
-        threshold: 0.3 // 30% visible
-    });
+    }, { threshold: 0.3 });
 
     observer.observe(heroSection);
 
-    // Detect tab visibility
+    // 5. Tab Visibility: Stop/Play when switching tabs
     document.addEventListener("visibilitychange", () => {
-
         if (document.hidden) {
             video.pause();
-        } else if (sectionVisible) {
-            video.play().catch(() => {});
+        } else {
+            attemptPlay();
         }
-
     });
-
 });
 </script>
 <style>

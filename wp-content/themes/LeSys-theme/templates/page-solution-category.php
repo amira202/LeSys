@@ -6,8 +6,6 @@ get_header();
 get_template_part( 'template-parts/content', 'hero' ); ?>
 
 <style>
-    .page-wrapper { max-width: 1000px; margin: 60px auto; padding: 0 20px;  }
-    .intro-text { font-size: 1.1rem; color: #4a5568; margin-bottom: 50px; }
     .transform-section { margin-bottom: 60px; }
     /* Add space between heading and paragraph text */
 .transform-section h2 {

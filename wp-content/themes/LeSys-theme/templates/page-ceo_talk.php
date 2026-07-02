@@ -75,7 +75,7 @@ get_header(); ?>
 }
 
 .ceo-heading {
-    color: #E2462B; 
+    color: var(--red); 
     font-size: 2.2rem;
     margin-bottom: 30px;
     line-height: 1.2;
@@ -107,7 +107,7 @@ get_header(); ?>
 }
 
 .ceo-social-links a {
-    color: #E2462B;
+    color: var(--red);
     text-decoration: none;
     font-weight: bold;
 }

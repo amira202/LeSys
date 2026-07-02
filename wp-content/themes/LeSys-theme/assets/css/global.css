@@ -46,7 +46,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .eyebrow{
   display:inline-block;padding:7px 16px;
   border:1px solid #d8dee5;background:#fff;
-  border-radius:999px;font-size:12px;color:var(--text);
+  border-radius:999px;font-size:18px;color:var(--text);
 }
 .eyebrow.on-dark{
   border-color:rgba(255,255,255,.18);
@@ -92,14 +92,47 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .brand-text{line-height:1;}
 .brand-text .lead{font-weight:800;font-size:18px;letter-spacing:3px;color:var(--blue);}
 .brand-text .sub{font-size:8.5px;font-weight:700;color:#9aa4b1;letter-spacing:2px;margin-top:3px;}
+  .brand{
+    max-width: 20%;
+  }
+  .brandf{
+    max-width: 70%;
+  }
+.uploaded-logo img{
+  max-width:80%;
+}
+@media screen and (max-width:768px) {
+   .brand{
+    max-width: 30%;
+  } 
+  .uploaded-logo img {
+  max-width: 100%;
+}
+}
+
+.navbar {
+  max-width: 1308px;}
+
 
 .nav-menu{display:flex;align-items:center;gap:28px;}
+.nav-menu{
+  align-items: unset;
+  gap: 22px;
+  padding: 0px 10px;
+}
+
 .nav-menu a{
   font-size:14px;font-weight:500;color:var(--text);
-  display:inline-flex;align-items:center;gap:5px;
+  display:inline-flex;align-items:center;gap:5px;font-size:18px;
 }
 .nav-menu a i{font-size:9px;opacity:.55;}
-
+.nav-menu a.active{
+    color:var(--red);
+    font-weight:600;
+}
+.nav-menu a:hover{
+  color: var(--red);
+}
 .nav-actions{display:flex;align-items:center;gap:8px;}
 .search-btn{
   width:42px;height:42px;border-radius:50%;
@@ -210,7 +243,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .trusted{padding:30px 0 70px;background:#fff;text-align:center;}
 .trusted .eyebrow{margin-bottom:18px;}
 .trusted .sub{
-  color:#88919c;font-size:14px;
+  color:#88919c;font-size:16px;
   max-width:520px;margin:0 auto 36px;line-height:1.6;
 }
 .logo-track-wrap{
@@ -223,7 +256,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   animation:marquee 35s linear infinite;
   width:max-content;
 }
-.logo-track img{height:80px;width:auto;object-fit:contain;opacity:.85;flex-shrink:0;}
+.logo-track img{height:40px;width:auto;object-fit:contain;opacity:1;flex-shrink:0;}
 .lg{
   flex-shrink:0;height:80px;display:inline-flex;align-items:center;
   font-weight:700;font-size:22px;letter-spacing:.5px;color:#6b7480;opacity:.85;
@@ -360,9 +393,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .sol .body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column;}
 .sol h4{font-size:18px;font-weight:700;color:var(--text);margin-bottom:10px;}
-.sol p{font-size:13.5px;color:#7c8693;line-height:1.55;margin-bottom:16px;flex:1;}
+.sol p{font-size:16px;color:#7c8693;line-height:1.55;margin-bottom:16px;flex:1;}
 .chips{display:flex;flex-wrap:wrap;gap:6px;}
-.chip{font-size:11px;color:#7c8693;border:1px solid #d8dee5;padding:5px 11px;border-radius:999px;}
+.chip{font-size:14px;color:#7c8693;border:1px solid #d8dee5;padding:5px 11px;border-radius:999px;}
 
 /* =================================================================
    11. PLATFORMS (DARK) — tabs + visual + metric bars
@@ -394,7 +427,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .plat-visual svg{max-width:100%;max-height:100%;}
 .plat-card h3{font-size:56px;font-weight:800;letter-spacing:-1px;color:#fff;line-height:1;}
-.plat-card h3 .ac{color:#5b8a7a;}
+.plat-card h3 .ac{color:#6ea3c5;}
 .plat-card .tagline{
   font-size:14px;letter-spacing:5px;color:#8b95a4;margin:14px 0 22px;
   text-transform:uppercase;
@@ -534,7 +567,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
   max-width:980px;margin:0 auto 40px;text-align:left;
 }
-.story-cols h6{font-size:13px;color:var(--red);font-weight:600;margin-bottom:10px;}
+.story-cols h6{font-size:18px;color:var(--red);font-weight:600;margin-bottom:10px;}
 .story-cols p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.88);}
 
 /* =================================================================
@@ -642,7 +675,12 @@ footer{
   border:1px solid rgba(255,255,255,.16);
   padding:6px 12px;border-radius:6px;
 }
-
+  .fcol h6 ,.fb p,.fcol li a{
+  font-size: 18px;
+}
+.nav-cta,.search-btn{
+  font-size: 16px;
+}
 /* =================================================================
    19. RESPONSIVE BREAKPOINTS
    ================================================================= */
@@ -690,6 +728,10 @@ footer{
   .brand-text .sub{font-size:7.5px;}
   .cform{padding:26px;}
   .story-inner{padding:50px 26px;}
+  .hero-title {
+    font-size: 30px;
+    line-height: 42px;
+}
 }
 
 #navMenu  a[lang] {
@@ -728,7 +770,7 @@ footer{
     box-sizing: border-box !important;
     background: transparent !important;
     border: none !important;
-    border-bottom: 2px solid #e2462b !important; /* Your signature accent red line */
+    border-bottom: 2px solid var(--red) !important; /* Your signature accent red line */
     padding: 18px 10px !important;
     color: #ffffff !important;
     font-family: 'Inter', sans-serif !important;
@@ -820,15 +862,15 @@ body.rtl .search-premium-header {
 .search-badge-pill .pulse-dot {
     width: 6px;
     height: 6px;
-    background-color: #e2462b;
+    background-color: var(--red);
     border-radius: 50%;
-    box-shadow: 0 0 8px #e2462b;
+    box-shadow: 0 0 8px var(--red);
 }
 
 .badge-pill-text {
     font-size: 11px;
     font-weight: 700;
-    color: #e2462b;
+    color: var(--red);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -920,7 +962,7 @@ body.rtl .premium-read-time i {
 }
 
 .search-premium-card:hover .premium-card-title a {
-    color: #e2462b; /* Subtle color shift when hovering the card itself */
+    color: var(--red); /* Subtle color shift when hovering the card itself */
 }
 
 .premium-card-excerpt {
@@ -939,7 +981,7 @@ body.rtl .premium-read-time i {
 }
 
 .premium-action-link {
-    color: #e2462b;
+    color: var(--red);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -1069,15 +1111,15 @@ body.rtl .search-premium-header {
 .search-badge-pill .pulse-dot {
     width: 6px;
     height: 6px;
-    background-color: #e2462b;
+    background-color: var(--red);
     border-radius: 50%;
-    box-shadow: 0 0 8px #e2462b;
+    box-shadow: 0 0 8px var(--red);
 }
 
 .badge-pill-text {
     font-size: 11px;
     font-weight: 700;
-    color: #e2462b;
+    color: var(--red);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -1169,7 +1211,7 @@ body.rtl .premium-read-time i {
 }
 
 .search-premium-card:hover .premium-card-title a {
-    color: #e2462b;
+    color: var(--red);
 }
 
 .premium-card-excerpt {
@@ -1188,7 +1230,7 @@ body.rtl .premium-read-time i {
 }
 
 .premium-action-link {
-    color: #e2462b;
+    color: var(--red);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -1289,10 +1331,7 @@ body.rtl .search-premium-card:hover .premium-action-link .link-icon {
     color: #0b1f3a;
     font-weight: 600;
 }
-.nav-menu a.active{
-    color:var(--red);
-    font-weight:600;
-}
+
 
 
 /* Archive Hero */
@@ -1318,10 +1357,5 @@ body.rtl .search-premium-card:hover .premium-action-link .link-icon {
 .page-numbers.current { background: #0b1f3a; color: #fff; }
 /**logo img*/
 .uploaded-logo{
-  max-width: 75%;}
-  .brand{
-    max-width: 22%;
-  }
-  .brandf{
-    max-width: 70%;
-  }
+max-width: 100%;}
+

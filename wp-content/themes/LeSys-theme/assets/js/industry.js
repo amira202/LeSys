@@ -1,47 +1,40 @@
-const nav = document.querySelectorAll('.industry-sticky-nav a');
+window.addEventListener('load', () => {
+    const navLinks = document.querySelectorAll('.industry-sticky-nav a');
+    const menu = document.querySelector('.industry-sticky-nav');
+    
+    const menuSectionIds = ['overview', 'how-we-help', 'key-outcomes', 'impact', 'why-lesys','lesys-advantage','related'];
+    const boundaryIds = ['startnav', 'contact']; 
+    
+    // We use a lower threshold to ensure it triggers even for shorter sections at the bottom
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
 
-if (nav.length) {
-    nav.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
+                // 1. Visibility Logic
+                if (boundaryIds.includes(id)) {
+                    menu.classList.add('hidden');
+                } else {
+                    menu.classList.remove('hidden');
+                }
 
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                // 2. Active Logic
+                if (menuSectionIds.includes(id)) {
+                    navLinks.forEach(link => {
+                        // Highlight the link only if it matches current section
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                    });
+                }
             }
         });
+    }, { 
+        // 0.1 is more forgiving for bottom-of-page sections
+        threshold: 0.1, 
+        rootMargin: '-10% 0px -40% 0px' 
     });
-}
 
-
-
-const sections = document.querySelectorAll(
-  '#overview, #how-we-help, #key-outcomes, #impact, #why-lesys, #lesys-advantage, #related'
-);
-
-const navLinks = document.querySelectorAll('.industry-sticky-nav a');
-
-let current = '';
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            current = entry.target.id;
-
-            navLinks.forEach(link => {
-                link.classList.toggle(
-                    'active',
-                    link.getAttribute('href') === '#' + current
-                );
-            });
-        }
+    [...menuSectionIds, ...boundaryIds].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
     });
-}, {
-    root: null,
-    threshold: [0.2, 0.5, 0.7]
 });
-
-sections.forEach(section => observer.observe(section));

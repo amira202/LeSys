@@ -5,7 +5,7 @@
     gap: 25px;
     position: relative;
     background-color: #fff;
-    padding: 15px 5%;
+    /**padding: 15px 5%;*/
    
 }
 
@@ -197,7 +197,7 @@
 }
 
 .nav-menu > ul.sub-menu > ul.sub-menu a:hover {
-  color: #e2462b !important; /* لون أحمر مميز عند التمرير */
+  color: var(--red) !important; /* لون أحمر مميز عند التمرير */
   font-weight: 600; /* زيادة سمك الخط قليلاً عند التمرير */  
 }
 

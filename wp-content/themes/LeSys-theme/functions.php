@@ -35,7 +35,7 @@ function my_theme_enqueue_assets() {
         '1.0.0', // رقم الإصدار
         true // الأهم: true تعني تحميل الملف في الفوتر (Footer) لزيادة سرعة الموقع
     );
-     if ( is_singular( 'industry' ) ||is_singular( 'service' )  ||is_singular( 'platform' ) ) {
+     if ( is_singular( 'industry' )   ||is_singular( 'platform' ) ) {
 
         wp_enqueue_style(
             'lesys-industry',
@@ -86,7 +86,7 @@ function my_theme_enqueue_assets() {
             true
         );
     }
-         if ( is_singular( 'solution' ) ) {
+         if ( is_singular( 'solution' ) ||is_tax( 'solution_category' )) {
 
         wp_enqueue_style(
             'lesys-solution',
@@ -508,6 +508,13 @@ function lesys_breadcrumbs_shortcode() {
         <span>/</span>
         <span class="current"><?php echo get_the_title(); ?></span>
         <?php }?>
+        <?php  if (is_tax( 'solution_category' ) || is_tax( 'category' )) {?>
+        <a href="<?php echo get_post_type_archive_link('solution'); ?>">Solutions</a>
+        <span>/</span>
+        <span class="current"><?php echo  single_term_title();?></span>
+        <?php } else if(is_page()){?>
+        <span class="current"><?php echo  get_the_title();?></span>
+        <?php }?>
     </div>
 
     <?php
@@ -814,3 +821,30 @@ function register_solution_taxonomy() {
     ));
 }
 add_action('init', 'register_solution_taxonomy');
+function fix_simple_job_board_script_order() {
+    if (is_page('careers') || is_page('apply')) {
+    // Check if the script is registered, then add the dependency
+    wp_scripts()->add_data('simple-job-board-public', 'group', 1);
+    wp_enqueue_script(
+        'simple-job-board-public', 
+        plugins_url('public/js/simple-job-board-public.js', 'simple-job-board/simple-job-board.php'), 
+        array('jquery', 'jquery-validate'), // This line forces the correct order
+        '1.4.0', 
+        true
+    );}
+}
+add_action('wp_enqueue_scripts', 'fix_simple_job_board_script_order', 20);
+
+function register_and_enqueue_job_board_dependencies() {
+    // 1. Register the jQuery Validation library from a reliable CDN
+    if (is_page('careers') || is_page('apply')) {
+    wp_register_script(
+        'jquery-validate', 
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js', 
+        array('jquery'), 
+        '1.19.5', 
+        true
+    );
+    }
+}
+add_action('wp_enqueue_scripts', 'register_and_enqueue_job_board_dependencies', 10);

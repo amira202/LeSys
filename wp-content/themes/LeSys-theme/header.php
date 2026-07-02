@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <?php wp_head(); ?>
+<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png" sizes="32x32" />
+<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png" />
 </head>
 <body <?php body_class(); ?>>
     

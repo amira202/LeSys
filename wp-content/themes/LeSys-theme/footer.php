@@ -157,7 +157,7 @@
 .talk-to-expert-btn {
     position: fixed;
     right: 25px;
-    bottom: 90px; /* above scroll-to-top button */
+    bottom: 120px; /* above scroll-to-top button */
     z-index: 9998;
 
     display: flex;
@@ -226,7 +226,7 @@
 .talk-to-expert-btn {
     position: fixed;
     right: 25px;
-    bottom: 90px;
+    bottom: 120px;
     z-index: 9998;
 
     width: 58px;
@@ -372,6 +372,65 @@ document.addEventListener('DOMContentLoaded', function() {
     </span>
 
 </a>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const solutionsLink = document.querySelector('a[href="#solutions"]');
+    const servicesLink = document.querySelector('a[href="#services"]');
+      const platformsLink = document.querySelector('a[href="#platforms"]');
+    
+    if (solutionsLink) {
+        solutionsLink.addEventListener("click", function (e) {
+            const isHomePage = window.location.pathname === "/wordpress/" || window.location.pathname === "/index.php";
+            
+            if (!isHomePage) {
+                // If we are NOT on the homepage, redirect to the archive page
+                e.preventDefault();
+                window.location.href = "/wordpress/solutions/"; 
+            } else {
+                // If we ARE on the homepage, scroll smoothly
+                e.preventDefault();
+                document.querySelector("#solutions").scrollIntoView({ 
+                    behavior: "smooth" 
+                });
+            }
+        });
+    }
+        if (servicesLink) {
+        solutionsLink.addEventListener("click", function (e) {
+            const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.php";
+            
+            if (!isHomePage) {
+                // If we are NOT on the homepage, redirect to the archive page
+                e.preventDefault();
+                window.location.href = "/services/"; 
+            } else {
+                // If we ARE on the homepage, scroll smoothly
+                e.preventDefault();
+                document.querySelector("#services").scrollIntoView({ 
+                    behavior: "smooth" 
+                });
+            }
+        });
+    }
+            if (platformsLink) {
+        solutionsLink.addEventListener("click", function (e) {
+            const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.php";
+            
+            if (!isHomePage) {
+                // If we are NOT on the homepage, redirect to the archive page
+                e.preventDefault();
+                window.location.href = "/platforms/"; 
+            } else {
+                // If we ARE on the homepage, scroll smoothly
+                e.preventDefault();
+                document.querySelector("#platforms").scrollIntoView({ 
+                    behavior: "smooth" 
+                });
+            }
+        });
+    }
+});
+      </script>
 <?php wp_footer(); ?>
 
 </body>

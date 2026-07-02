@@ -12,8 +12,8 @@ get_header(); ?>
                 <h1>Strategic Partners</h1>
                 <p class="hero-lead">Building Stronger Solutions Through Partnership</p>
                 <div class="hero-cta">
-                    <a href="#contact-form" class="btn-primary">Become a Partner</a>
-                    <a href="#philosophy" class="btn-secondary">Learn More</a>
+                    <a href="#contact-form" class="btn btn-primary">Become a Partner</a>
+                    <a href="#philosophy" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             <div class="hero-visual">

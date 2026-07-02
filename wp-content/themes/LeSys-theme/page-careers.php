@@ -4,6 +4,7 @@
  */
 get_header(); ?>
 
+
 <section class="careers-hero">
     <div class="container">
         <h1>Build the<br><span class="ac">Future with LESYS</span></h1>
@@ -42,37 +43,80 @@ get_header(); ?>
         <h3 class="section-title">Explore Opportunities</h3>
         <p class="section-sub">Discover how your skills can contribute to shaping the future with LESYS.</p>
         
-  <div class="job-board-wrap">
-    <?php echo do_shortcode('[jobpost layout="grid"]'); ?>
+<div class="job-board-wrap">
+    <?php 
+    $args = array(
+        'post_type'      => 'jobpost',
+        'post_status'    => 'publish',
+        'posts_per_page' => 10,
+    );
+    $job_query = new WP_Query($args);
+
+    if ($job_query->have_posts()) :
+        while ($job_query->have_posts()) : $job_query->the_post(); ?>
+            <div class="single-job-listing">
+                <div class="job-info">
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <div class="job-short-desc">
+                        <?php 
+                        // Displays the excerpt (short description)
+                        // If no excerpt is set, it pulls the first 20 words of the content
+                        echo wp_trim_words(get_the_excerpt(), 20, '...'); 
+                        ?>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <a href="<?php the_permalink(); ?>" class="btn-apply">View Details</a>
+                </div>
+            </div>
+        <?php endwhile;
+        wp_reset_postdata();
+    else :
+        echo '<p style="text-align:center; padding: 20px;">No open opportunities at this time.</p>';
+    endif;
+    ?>
 </div>
-    </div>
 </section>
-
 <style>
-/* Hero - Matches Enterprise Style */
-.careers-hero { padding: 120px 0; background: #0b1f3a; color: #fff; }
-.careers-hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 20px; }
-.careers-hero h1 span.ac { color: #6ea3c5; }
+/* Reset Section Padding - Shrinking vertical space */
+.careers-hero { padding: 60px 0; background: #0b1f3a; color: #fff; text-align: center; }
+.careers-content { padding: 40px 0; background: #f8fafc; }
+.careers-jobs { padding: 40px 0; background: #fff; }
 
-/* Content Section - Dark Theme Consistency */
-.careers-content { padding: 80px 0; }
-.section-title { font-size: 2rem; margin-bottom: 40px; color: #0b1f3a; }
-.intro-text { max-width: 800px; margin: 0 auto 60px; text-align: center; font-size: 1.1rem; line-height: 1.7; color: #667085; }
+/* Hero adjustments */
+.careers-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px; }
+.careers-hero .lead { margin-top: 0; opacity: 0.9; }
 
-/* Grid Cards - Updated to Darker Palette */
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.feat-card { padding: 35px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; transition: 0.3s; }
-.feat-card:hover { border-color: #6ea3c5; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-.feat-card h6 { color: #0b1f3a; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
-.feat-card p { color: #667085; line-height: 1.6; font-size: 0.95rem; margin: 0; }
+/* Tighten Grid & Sections */
+.section-title { font-size: 1.75rem; margin-bottom: 25px; color: #0b1f3a; }
+.intro-text { max-width: 800px; margin: 0 auto 30px; }
 
-/* Job Board Styling */
-.careers-jobs { padding: 80px 0; background: #f8fafc; }
-.job-board-wrap { max-width: 1000px; margin: 0 auto; }
+/* Shrink Features Grid */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.feat-card { padding: 25px; background: #ffffff; border-radius: 8px; border-top: 3px solid #0b1f3a; }
 
-/* Responsive adjustments */
+/* Tighten Job Listing Cards */
+.single-job-listing { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    padding: 15px 20px; 
+    margin-bottom: 10px; /* Reduced space between jobs */
+    border-radius: 6px; 
+}
+
+.job-short-desc { font-size: 0.9rem; margin-top: 4px; color: #667085; }
+.btn-apply { padding: 8px 16px; font-size: 0.85rem; }
+
+/* Responsive */
 @media (max-width: 768px) {
-    .careers-hero { padding: 80px 0; }
+    .careers-hero { padding: 50px 0; }
+    .careers-content, .careers-jobs { padding: 30px 0; }
+}
+.section-sub{
+margin-bottom:50px;
 }
 </style>
 

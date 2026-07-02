@@ -127,7 +127,7 @@ $info_hours   = get_field('ct_info_hours') ?: 'Sunday – Thursday: 8:00 AM – 
 .meta-item-box .text-group { display: flex; flex-direction: column; gap: 4px; }
 .meta-item-box .text-group .lbl { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; color: #a4b3c6; opacity: 0.7; }
 .meta-item-box .text-group .val { font-size: 1.05rem; font-weight: 600; color: #ffffff; text-decoration: none; line-height: 1.4; }
-.meta-item-box .text-group a.val:hover { color: #e2462b; }
+.meta-item-box .text-group a.val:hover { color: var(--red); }
 .meta-item-box .text-group .val.txt-block { font-weight: 400; font-size: 0.95rem; color: #e2e8f0; }
 
 /* Help Services Box */
@@ -142,7 +142,7 @@ $info_hours   = get_field('ct_info_hours') ?: 'Sunday – Thursday: 8:00 AM – 
 .form-card-box form p { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
 .form-card-box input[type="text"], .form-card-box input[type="email"], .form-card-box input[type="tel"], .form-card-box textarea { width: 100%; background: #06101e; border: 1px solid #142435; border-radius: 6px; padding: 14px 18px; color: #ffffff; font-size: 1rem; box-sizing: border-box; }
 .form-card-box input:focus, .form-card-box textarea:focus { outline: none; border-color: #6ea3c5; }
-.form-card-box input[type="submit"] { background: #e2462b; color: #ffffff; border: none; border-radius: 6px; padding: 16px 32px; font-weight: 600; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+.form-card-box input[type="submit"] { background: var(--red); color: #ffffff; border: none; border-radius: 6px; padding: 16px 32px; font-weight: 600; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
 @media (min-width: 992px) {
     .contact-split-grid {
         display: grid;

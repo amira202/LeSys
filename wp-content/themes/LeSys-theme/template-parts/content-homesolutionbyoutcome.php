@@ -4,7 +4,7 @@ $solutions_title = get_field('solutions_title');
 $solutions_description = get_field('solutions_description');
 
 $solutions = new WP_Query([
-    'post_type'      => 'solution',
+    'post_type'      => 'service',
     'posts_per_page' => 12, 
     'post_status'    => 'publish'
 ]);
@@ -35,9 +35,9 @@ if ($solutions->have_posts()) {
         $items[] = [
             'title'   => get_the_title(),
             'content' => get_the_excerpt(), 
-            'img'     => get_field('solution_image'), 
+            'img'     => get_the_post_thumbnail(get_the_ID()),
             'badge'   => $top_badge,
-            'tags'    => $tags_array,
+            'platforms'    => get_field('platforms_for_service'),
             'url'     => get_permalink()
         ];
     }
@@ -49,7 +49,7 @@ $items = array_reverse($items);
 <!-- =================================================================
      SOLUTIONS — Smooth Animated Slider Carousel 
      ================================================================= -->
-<section class="section" id="solutions">
+<section class="section" id="services">
   <div class="container">
     <div class="sec-eyebrow-row"><div class="eyebrow"><?php echo esc_html($section_title); ?></div></div>
     <div class="sec-head">
@@ -135,10 +135,15 @@ $items = array_reverse($items);
               <h4><?php echo esc_html($item['title']); ?></h4>
               <p><?php echo esc_html($item['content']); ?></p>
               
-              <?php if (!empty($item['tags'])) : ?>
+              <?php if (!empty($item['platforms'])) : ?>
                 <div class="chips">
-                  <?php foreach ($item['tags'] as $tag_name) : ?>
-                    <span class="chip"><?php echo esc_html($tag_name); ?></span>
+                  <?php foreach ($item['platforms'] as $tag_name) : ?>
+                   
+                    <a href="<?php echo get_permalink($tag_name->ID); ?>" class="platform-link">
+                <span class="chip">
+                    <?php echo esc_html($tag_name->post_title); ?>
+                </span>
+            </a>
                   <?php endforeach; ?>
                 </div>
               <?php endif; ?>
@@ -232,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Horizontal flex track with high-performance CSS transition animations */
 .sol-track {
   display: flex;
-  gap: 0; /* Keep gap at 0; widths are calculated as clean fractional values */
+  gap: 20; /* Keep gap at 0; widths are calculated as clean fractional values */
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
   width: 100%;
@@ -252,5 +257,8 @@ document.addEventListener('DOMContentLoaded', function() {
     flex: 0 0 33.3333%; /* Show exactly 3 items at a time on desktop views */
     max-width: 33.3333%;
   }
+}
+.img{
+  height: stretch;
 }
 </style>

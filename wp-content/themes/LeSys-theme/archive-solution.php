@@ -28,7 +28,7 @@ $query = new WP_Query($args);
             <h1>Our Solutions</h1>
             <p>Driving operational success through intelligent platforms, continuous monitoring, and tailored innovation.</p>
             <div class="hero-cta-container">
-                <a href="#contact" class="btn-primary">Talk to an Expert</a>
+                <a href="#contact" class="btn btn-primary">Talk to an Expert</a>
             </div>
         </div>
                 <!-- Breadcrumbs -->
